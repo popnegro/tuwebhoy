@@ -38,7 +38,7 @@
         }
 
         .carousel-caption {
-            bottom: 20%;
+            bottom: 30%;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
@@ -48,7 +48,7 @@
             background: white;
             border-radius: 20px;
             padding: 25px;
-            margin-top: -50px;
+            margin-top: -75px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
             border: none;
         }
