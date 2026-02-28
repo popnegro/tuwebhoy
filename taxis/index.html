@@ -61,104 +61,54 @@
         <div class="row justify-content-center">
             <div class="col-md-7 col-lg-5">
 
-                <div class="card main-card">
+               <div class="card main-card ">
+                    <h5 class="fw-bold mb-3">Tu ubicación detectada:</h5>
+                    
+                    <div id="map">Cargando mapa...</div>
+
                     <div class="d-grid gap-3">
-                        <a href="#" id="btn-ws-dinamico" target="_blank" class="btn btn-action btn-whatsapp shadow">
-                            <i class="bi bi-whatsapp me-2"></i> Pedir por WhatsApp
-                        </a>
+                        <button id="whatsappBtn" class="btn btn-whatsapp py-3 fw-bold pulse">
+                            <i class="bi bi-whatsapp me-2"></i> PEDIR POR WHATSAPP
+                        </button>
                         
+                       
                     </div>
+                    <p class="small text-muted mt-3">Llegamos a tu puerta en minutos.</p>
+                    
+                  <script>
+        let map, marker;
+        let userCoords = { lat: -32.9887, lng: -68.7775 }; // Default: Maipú, Mendoza
+        const taxiPhone = "2613871088"; // Reemplaza con tu número real
 
-                    <div class="mt-4 px-2">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <small class="fw-bold text-muted">
-                                <i class="bi bi-geo-alt-fill text-danger"></i>
-                                <span id="ubicacion-status text-truncate">Detectando...</span>
-                            </small>
-                            <button onclick="obtenerUbicacion()" class="btn btn-sm btn-outline-primary border-0"
-                                title="Actualizar ubicación">
-                            </button>
-                        </div>
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 16,
+                center: userCoords,
+                disableDefaultUI: true
+            });
+            marker = new google.maps.Marker({ map: map, position: userCoords });
 
-                        <div id="map" style="height: 200px; width: 100%; border-radius: 15px; border: 2px solid #fff;"
-                            class="shadow-sm"></div>
+            // Intentar obtener ubicación real
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    userCoords = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    map.setCenter(userCoords);
+                    marker.setPosition(userCoords);
+                });
+            }
+        }
 
-                        <div class="bg-light p-2 mt-2 rounded border">
-                            <p class="small mb-0 text-center"><strong>Tu dirección:</strong> <br> <span
-                                    id="direccion-texto" class="text-secondary">Buscando...</span></p>
-                        </div>
-                    </div>
+        document.getElementById("whatsappBtn").onclick = function() {
+            const googleMapsUrl = `https://www.google.com/maps?q=${userCoords.lat},${userCoords.lng}`;
+            const message = encodeURIComponent(`Hola Taxi Express, necesito una unidad en mi ubicación actual: ${googleMapsUrl}`);
+            window.location.href = `https://wa.me/${taxiPhone}?text=${message}`;
+        };
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuFEjycWBUxeJ32jWckekiIutLgcul21Q&callback=initMap"></script>
 
-                    <script>
-                        let map, marker, geocoder;
-                        let userLatLng = "";
-                        let userAddress = "Ubicación no especificada";
-
-                        function initMap() {
-                            // Maipú, Mendoza por defecto
-                            const defaultLoc = { lat: -32.9819, lng: -68.7897 };
-
-                            map = new google.maps.Map(document.getElementById("map"), {
-                                zoom: 16,
-                                center: defaultLoc,
-                                disableDefaultUI: true,
-                                styles: [{ "featureType": "poi", "stylers": [{ "visibility": "off" }] }] // Mapa limpio
-                            });
-
-                            marker = new google.maps.Marker({
-                                map: map,
-                                position: defaultLoc,
-                                animation: google.maps.Animation.DROP,
-                                icon: {
-                                    url: "https://maps.google.com/mapfiles/ms/icons/taxi.png"
-                                }
-                            });
-
-                            geocoder = new google.maps.Geocoder();
-                            obtenerUbicacion(); // Intentar localizar al cargar
-                        }
-
-                        function obtenerUbicacion() {
-                            document.getElementById('ubicacion-status').innerText = "Actualizando...";
-
-                            if (navigator.geolocation) {
-                                navigator.geolocation.getCurrentPosition((position) => {
-                                    const pos = {
-                                        lat: position.coords.latitude,
-                                        lng: position.coords.longitude,
-                                    };
-
-                                    userLatLng = `https://www.google.com/maps?q=${pos.lat},${pos.lng}`;
-
-                                    marker.setPosition(pos);
-                                    map.setCenter(pos);
-                                    document.getElementById('ubicacion-status').innerText = "Ubicación encontrada";
-
-                                    // Traducir coordenadas a dirección
-                                    geocoder.geocode({ location: pos }, (results, status) => {
-                                        if (status === "OK" && results[0]) {
-                                            userAddress = results[0].formatted_address;
-                                            document.getElementById('direccion-texto').innerText = userAddress;
-                                            actualizarBotonWhatsApp();
-                                        }
-                                    });
-                                }, () => {
-                                    document.getElementById('ubicacion-status').innerText = "Error de GPS";
-                                    document.getElementById('direccion-texto').innerText = "Por favor, escribe tu dirección al llamar.";
-                                });
-                            }
-                        }
-
-                        function actualizarBotonWhatsApp() {
-                            const telefono = "5492613871088"; // Reemplazar con el número real
-                            const texto = `Hola, necesito un taxi en: *${userAddress}*. \n\nUbicación GPS: ${userLatLng}`;
-                            const url = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
-                            document.getElementById('btn-ws-dinamico').href = url;
-                        }
-                    </script>
-
-                    <script async defer
-                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuFEjycWBUxeJ32jWckekiIutLgcul21Q&callback=initMap"></script>
 
                     <div class="row mt-4 g-2 text-center small text-secondary">
                         <div class="col-4 border-end">

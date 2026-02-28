@@ -109,6 +109,7 @@
             border: 3px solid #eee;
             margin-top: 20px;
         }
+                #map { height: 250px; width: 100%; border-radius: 12px; margin-bottom: 20px; border: 2px solid #ddd; }
 
         /* Estilo Reseñas Google */
         .review-card {
