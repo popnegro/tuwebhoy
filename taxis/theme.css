@@ -1,197 +1,202 @@
+body {
+    font-family: sans-serif;
+    background-color: #fff;
+}
+
+:root {
+    --taxi-yellow: #f7d117;
+    --taxi-black: #212529;
+    --whatsapp-green: #25d366;
+    --call-green: #28a745;
+}
+
+/* HEADER Y LOGO */
+.navbar-brand img {
+    height: 40px;
+    /* Ajusta el tamaño de tu logo aquí */
+    width: auto;
+}
+
+.navbar {
+    border-bottom: 3px solid var(--taxi-yellow);
+}
+
+/* Estilos del Carrusel */
+#taxiCarousel .carousel-item {
+    height: 50vh;
+    /* Altura en móviles */
+    min-height: 300px;
+}
+
+#taxiCarousel .carousel-item img {
+    object-fit: cover;
+    height: 100%;
+    filter: brightness(0.6);
+    /* Oscurece para que resalte el texto */
+}
+
+.carousel-caption {
+    bottom: 30%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
 
 
-        body {
-            font-family: sans-serif;
-            background-color: #fff;
-        }
+/* Botonera Flotante */
+.main-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: -100px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border: none;
+}
 
-        :root {
-            --taxi-yellow: #f7d117;
-            --taxi-black: #212529;
-            --whatsapp-green: #25d366;
-            --call-green: #28a745;
-        }
+.btn-action {
+    font-size: 1.2rem;
+    font-weight: 800;
+    border-radius: 12px;
+    padding: 15px;
+    text-transform: uppercase;
+    transition: transform 0.2s;
+    border: none;
+}
 
-        /* HEADER Y LOGO */
-        .navbar-brand img {
-            height: 40px;
-            /* Ajusta el tamaño de tu logo aquí */
-            width: auto;
-        }
+.btn-action:active {
+    transform: scale(0.97);
+}
 
-        .navbar {
-            border-bottom: 3px solid var(--taxi-yellow);
-        }
+.btn-call {
+    background-color: var(--call-green);
+    color: white;
+}
 
-        /* Estilos del Carrusel */
-        #taxiCarousel .carousel-item {
-            height: 50vh;
-            /* Altura en móviles */
-            min-height: 300px;
-        }
+.btn-call:hover {
+    background-color: #218838;
+    color: white;
+}
 
-        #taxiCarousel .carousel-item img {
-            object-fit: cover;
-            height: 100%;
-            filter: brightness(0.6);
-            /* Oscurece para que resalte el texto */
-        }
+.btn-whatsapp {
+    background-color: var(--whatsapp-green);
+    color: white;
+}
 
-        .carousel-caption {
-            bottom: 30%;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
+.btn-whatsapp:hover {
+    background-color: #1ebe57;
+    color: white;
+}
 
+/* Animación de pulso para el botón principal */
+.pulse {
+    animation: pulse-animation 1.5s infinite;
+}
 
-        /* Botonera Flotante */
-        .main-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            margin-top: -75px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-            border: none;
-        }
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0px rgba(40, 167, 69, 0.6);
+    }
 
-        .btn-action {
-            font-size: 1.2rem;
-            font-weight: 800;
-            border-radius: 12px;
-            padding: 15px;
-            text-transform: uppercase;
-            transition: transform 0.2s;
-            border: none;
-        }
+    100% {
+        box-shadow: 0 0 0 15px rgba(40, 167, 69, 0);
+    }
+}
 
-        .btn-action:active {
-            transform: scale(0.97);
-        }
+/* Contenedor del Mapa */
+.map-container {
+    border-radius: 15px;
+    overflow: hidden;
+    border: 3px solid #eee;
+    margin-top: 20px;
+}
 
-        .btn-call {
-            background-color: var(--call-green);
-            color: white;
-        }
+#map {
+    height: 150px;
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+}
 
-        .btn-call:hover {
-            background-color: #218838;
-            color: white;
-        }
+/* Estilo Reseñas Google */
+.review-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
 
-        .btn-whatsapp {
-            background-color: var(--whatsapp-green);
-            color: white;
-        }
+.google-logo {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
 
-        .btn-whatsapp:hover {
-            background-color: #1ebe57;
-            color: white;
-        }
+.star-rating {
+    color: #fbbc05;
+    font-size: 0.9rem;
+}
 
-        /* Animación de pulso para el botón principal */
-        .pulse {
-            animation: pulse-animation 1.5s infinite;
-        }
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #555;
+}
 
-        @keyframes pulse-animation {
-            0% {
-                box-shadow: 0 0 0 0px rgba(40, 167, 69, 0.6);
-            }
+/* Footer */
+footer {
+    background-color: var(--taxi-black);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 40px 0 20px;
+}
 
-            100% {
-                box-shadow: 0 0 0 15px rgba(40, 167, 69, 0);
-            }
-        }
+footer h6 {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-        /* Contenedor del Mapa */
-        .map-container {
-            border-radius: 15px;
-            overflow: hidden;
-            border: 3px solid #eee;
-            margin-top: 20px;
-        }
-                #map { height: 250px; width: 100%; border-radius: 12px; margin-bottom: 20px; border: 2px solid #ddd; }
+footer a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+}
 
-        /* Estilo Reseñas Google */
-        .review-card {
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
+footer a:hover {
+    color: var(--taxi-yellow);
+}
 
-        .google-logo {
-            width: 18px;
-            height: 18px;
-            vertical-align: middle;
-        }
+.social-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: transform 0.2s;
+    display: inline-block;
+}
 
-        .star-rating {
-            color: #fbbc05;
-            font-size: 0.9rem;
-        }
+.social-icon:hover {
+    transform: translateY(-3px);
+}
 
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #555;
-        }
+.bi-facebook:hover {
+    color: #1877F2;
+}
 
-        /* Footer */
-        footer {
-            background-color: var(--taxi-black);
-            color: rgba(255, 255, 255, 0.8);
-            padding: 40px 0 20px;
-        }
+.bi-instagram:hover {
+    color: #E4405F;
+}
 
-        footer h6 {
-            color: white;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.bi-twitter-x:hover {
+    color: #fff;
+}
 
-        footer a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        footer a:hover {
-            color: var(--taxi-yellow);
-        }
-
-        .social-icon {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            transition: transform 0.2s;
-            display: inline-block;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-3px);
-        }
-
-        .bi-facebook:hover {
-            color: #1877F2;
-        }
-
-        .bi-instagram:hover {
-            color: #E4405F;
-        }
-
-        .bi-twitter-x:hover {
-            color: #fff;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            margin-top: 30px;
-        }
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    margin-top: 30px;
+}
