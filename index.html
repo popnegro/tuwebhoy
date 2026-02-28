@@ -1,444 +1,128 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="TuWebHoy: Soluciones digitales profesionales de marca blanca. Impulsa tu negocio con tecnología de vanguardia y diseño orientado a resultados.">
-    <title>TuWebHoy | Soluciones Digitales y Conversión de Leads</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
+    <title>Taxi Seguro | Tu Unidad en Camino</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
         :root {
-            --primary-color: #0052cc;
-            --secondary-color: #00c2ff;
-            --text-dark: #1d2129;
-            --text-light: #5e6c84;
-            --bg-light: #f4f5f7;
-            --white: #ffffff;
-            --success: #36b37e;
+            --taxi-yellow: #f7d117;
+            --taxi-black: #212529;
+            --whatsapp-green: #25d366;
+            --call-green: #28a745;
+            --google-blue: #4285F4;
+        }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; }
+        
+        .hero-taxi {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1556122071-e404be74549b?q=80&w=1000&auto=format&fit=crop');
+            background-size: cover; background-position: center; color: white; padding: 40px 0 70px 0; border-bottom: 5px solid var(--taxi-yellow);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .main-card {
+            background: white; border-radius: 20px; padding: 20px; margin-top: -50px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: none;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--white);
+        .btn-action { font-size: 1.2rem; font-weight: 800; border-radius: 12px; padding: 15px; text-transform: uppercase; transition: 0.3s; border: none; }
+        .btn-call { background-color: var(--call-green); color: white; }
+        .btn-whatsapp { background-color: var(--whatsapp-green); color: white; }
+
+        .pulse { animation: pulse-animation 1.5s infinite; }
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0px rgba(40, 167, 69, 0.6); }
+            100% { box-shadow: 0 0 0 15px rgba(40, 167, 69, 0); }
         }
 
-        /* Utilidades SEO: Jerarquía de Headers */
-        h1,
-        h2,
-        h3 {
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header & Nav */
-        header {
-            padding: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eee;
-        }
-
-        .logo {
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 80px 0;
-            text-align: center;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        .btn-main {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px 35px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
-            display: inline-block;
-        }
-
-        .btn-main:hover {
-            background-color: #0747a6;
-        }
-
-        /* Features Section (SEO Context) */
-        .features {
-            padding: 80px 0;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .card {
-            padding: 30px;
-            border: 1px solid #e1e4e8;
-            border-radius: 8px;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Lead Conversion Form */
-        .conversion-section {
-            background-color: var(--bg-light);
-            padding: 80px 0;
-        }
-
-        .form-container {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background-color: var(--success);
-            color: white;
-            border: none;
-            padding: 15px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        /* Footer */
-        footer {
-            padding: 40px 0;
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-        }
+        /* Estilo Reseñas Google */
+        .review-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 15px; margin-bottom: 15px; }
+        .google-logo { width: 18px; height: 18px; vertical-align: middle; }
+        .star-rating { color: #fbbc05; font-size: 0.9rem; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; background: #eee; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #555; }
     </style>
 </head>
-
 <body>
 
-    <header class="container">
-        <a href="#" class="logo">TuWebHoy</a>
-        <nav>
-            <a href="#contacto" class="btn-main" style="padding: 10px 20px;">Empezar ahora</a>
-        </nav>
+    <header class="hero-taxi text-center">
+        <div class="container px-4">
+            <h1 class="h3 fw-bold mb-1">CENTRAL TAXI EXPRESS</h1>
+            <p class="small opacity-75"><i class="bi bi-geo-alt"></i> Disponible en toda la ciudad</p>
+        </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Potencia tu Presencia Digital con Marca Blanca</h1>
-                <p>Soluciones web optimizadas para buscadores y diseñadas para convertir visitantes en clientes reales.
-                    La tecnología de <strong>TuWebHoy</strong> a tu servicio.</p>
-                <a href="#contacto" class="btn-main">Solicitar Consultoría Gratuita</a>
-            </div>
-        </section>
+    <main class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-5">
+                
+                <div class="card main-card mb-4">
+                    <div class="d-grid gap-3">
+                        <a href="tel:+123456789" class="btn btn-action btn-call pulse">
+                            <i class="bi bi-telephone-fill me-2"></i> Llamar Ahora
+                        </a>
+                        <a href="https://wa.me/123456789" class="btn btn-action btn-whatsapp">
+                            <i class="bi bi-whatsapp me-2"></i> Pedir por WhatsApp
+                        </a>
+                    </div>
 
-        <section class="features container">
-            <h2 style="text-align: center;">¿Por qué elegir nuestra infraestructura?</h2>
-            <div class="grid">
-                <article class="card">
-                    <h3>Optimización SEO nativa</h3>
-                    <p>Estructura de código limpia y tiempos de carga ultra rápidos para escalar posiciones en Google de
-                        forma orgánica.</p>
-                </article>
-                <article class="card">
-                    <h3>Diseño Responsive</h3>
-                    <p>Tu sitio se verá perfecto en cualquier dispositivo: móviles, tablets y ordenadores de escritorio.
-                    </p>
-                </article>
-                <article class="card">
-                    <h3>Marca Blanca Real</h3>
-                    <p>Personalización total bajo tu identidad. Sin menciones externas, solo tu marca y tu negocio.</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="contacto" class="conversion-section">
-            <div class="container">
-                <div class="form-container">
-                    <h2 style="text-align: center;">Hablemos de tu proyecto</h2>
-                    <p style="text-align: center; margin-bottom: 30px;">Completa el formulario y un experto se pondrá en
-                        contacto contigo en menos de 24 horas.</p>
-
-                    <form action="#" method="POST">
-                        <div class="form-group">
-                            <label for="nombre">Nombre completo</label>
-                            <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+                    <div class="mt-4">
+                        <div style="border-radius: 12px; overflow: hidden;" class="shadow-sm">
+                            <iframe width="100%" height="180" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093643!2d144.9537353153166!3d-37.81627977975124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d110196230!2sTaxi!5e0!3m2!1ses!2s!4v1614330000000!5m2!1ses!2s" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Correo electrónico</label>
-                            <input type="email" id="email" name="email" placeholder="juan@empresa.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="mensaje">¿Cómo podemos ayudarte?</label>
-                            <textarea id="mensaje" name="mensaje" rows="4"
-                                placeholder="Cuéntanos brevemente tu objetivo..."></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Enviar Información</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-        <section id="buscador-negocios" class="search-section">
-            <div class="container">
-                <header class="section-header">
-                    <h2>Encuentra servicios cerca de ti</h2>
-                    <p>Explora los mejores negocios por rubro y cercanía.</p>
-                </header>
-
-                <div class="search-bar-container">
-                    <div class="search-box">
-                        <div class="input-group">
-                            <label for="rubro">Rubro</label>
-                            <input type="text" id="rubro" placeholder="Ej: Gastronomía, Salud, Talleres...">
-                        </div>
-                        <div class="input-group">
-                            <label for="ubicacion">Ubicación</label>
-                            <input type="text" id="ubicacion" placeholder="Tu ciudad o barrio">
-                        </div>
-                        <button class="btn-search">Buscar Negocios</button>
                     </div>
                 </div>
 
-                <div class="finder-layout">
-                    <div class="results-list">
-                        <div class="result-item">
-                            <span class="category-tag">Restaurante</span>
-                            <h4>La Mesa Central</h4>
-                            <p>Av. Principal 123 - a 500m de tu ubicación</p>
-                            <a href="#" class="view-more">Ver perfil</a>
-                        </div>
-                        <div class="result-item">
-                            <span class="category-tag">Salud</span>
-                            <h4>Clínica Norte</h4>
-                            <p>Calle Falsa 456 - a 1.2km de tu ubicación</p>
-                            <a href="#" class="view-more">Ver perfil</a>
+                <div class="px-2">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold mb-0">Opiniones de clientes</h5>
+                        <div class="text-end">
+                            <span class="fw-bold">4.9</span>
+                            <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
                         </div>
                     </div>
 
-                    <div class="map-container">
-                        <div class="map-placeholder">
-                            <p>Interactivo: El mapa se cargará aquí</p>
-                            <small>(Integración sugerida: Google Maps API o OpenStreetMap)</small>
+                    <div class="review-card shadow-sm">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="avatar me-3">JP</div>
+                            <div class="flex-grow-1">
+                                <p class="mb-0 fw-bold small">Juan Pérez <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Logo.svg" class="google-logo" alt="G"></p>
+                                <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                            </div>
+                            <small class="text-muted">hace 2 días</small>
                         </div>
+                        <p class="small text-muted mb-0">"Llegaron en 5 minutos al aeropuerto. El conductor fue muy amable y el auto estaba impecable. Muy recomendado."</p>
+                    </div>
+
+                    <div class="review-card shadow-sm">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="avatar me-3" style="background:#4285F4; color:white;">ML</div>
+                            <div class="flex-grow-1">
+                                <p class="mb-0 fw-bold small">María López <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Logo.svg" class="google-logo" alt="G"></p>
+                                <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                            </div>
+                            <small class="text-muted">hace 1 semana</small>
+                        </div>
+                        <p class="small text-muted mb-0">"Servicio confiable y precio justo. Pedí por WhatsApp y la respuesta fue inmediata."</p>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <a href="#" class="text-decoration-none small fw-bold text-primary">Ver las 148 reseñas en Google Maps</a>
                     </div>
                 </div>
+
             </div>
-        </section>
-
-        <style>
-            .search-section {
-                padding: 80px 0;
-                background: #fff;
-            }
-
-            .section-header {
-                text-align: center;
-                margin-bottom: 40px;
-            }
-
-            /* Estilo Barra de Búsqueda */
-            .search-bar-container {
-                background: var(--white);
-                padding: 20px;
-                border-radius: 12px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-                margin-bottom: 40px;
-            }
-
-            .search-box {
-                display: flex;
-                gap: 20px;
-                align-items: flex-end;
-            }
-
-            .input-group {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .input-group label {
-                font-size: 0.85rem;
-                font-weight: 600;
-                margin-bottom: 8px;
-                color: var(--text-light);
-            }
-
-            .input-group input {
-                padding: 12px;
-                border: 1px solid #ddd;
-                border-radius: 6px;
-            }
-
-            .btn-search {
-                background: var(--primary-color);
-                color: white;
-                border: none;
-                padding: 13px 25px;
-                border-radius: 6px;
-                cursor: pointer;
-                font-weight: 600;
-            }
-
-            /* Layout de resultados y mapa */
-            .finder-layout {
-                display: grid;
-                grid-template-columns: 1fr 1.5fr;
-                gap: 30px;
-                height: 500px;
-            }
-
-            .results-list {
-                overflow-y: auto;
-                padding-right: 10px;
-            }
-
-            .result-item {
-                padding: 20px;
-                border: 1px solid #eee;
-                border-radius: 8px;
-                margin-bottom: 15px;
-                transition: border-color 0.3s;
-            }
-
-            .result-item:hover {
-                border-color: var(--secondary-color);
-            }
-
-            .category-tag {
-                font-size: 0.7rem;
-                background: var(--bg-light);
-                padding: 4px 8px;
-                border-radius: 4px;
-                color: var(--primary-color);
-                text-transform: uppercase;
-                font-weight: 700;
-            }
-
-            .view-more {
-                font-size: 0.9rem;
-                color: var(--primary-color);
-                text-decoration: none;
-                font-weight: 600;
-            }
-
-            .map-container {
-                background: #e5e3df;
-                border-radius: 12px;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .map-placeholder {
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                color: #777;
-                background-image: linear-gradient(45deg, #e5e5f7 25%, transparent 25%), linear-gradient(-45deg, #e5e5f7 25%, transparent 25%);
-                background-size: 20px 20px;
-            }
-
-            @media (max-width: 768px) {
-                .search-box {
-                    flex-direction: column;
-                }
-
-                .finder-layout {
-                    grid-template-columns: 1fr;
-                    height: auto;
-                }
-
-                .map-container {
-                    height: 300px;
-                    order: -1;
-                }
-            }
-        </style>
+        </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 TuWebHoy. Todos los derechos reservados.</p>
-            <p>Estrategias de posicionamiento y conversión para partners de confianza.</p>
+    <footer class="text-center text-muted py-4 border-top bg-white">
+        <p class="small mb-1 fw-bold text-dark">¿Buscas taxi ahora?</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="tel:+123456789" class="text-success text-decoration-none fw-bold">Llamar</a>
+            <span class="text-muted">|</span>
+            <a href="https://wa.me/123456789" class="text-success text-decoration-none fw-bold">WhatsApp</a>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

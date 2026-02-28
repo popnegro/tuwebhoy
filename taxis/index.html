@@ -64,6 +64,12 @@
             border: 3px solid #eee;
             margin-top: 20px;
         }
+
+        /* Estilo Reseñas Google */
+        .review-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 15px; margin-bottom: 15px; }
+        .google-logo { width: 18px; height: 18px; vertical-align: middle; }
+        .star-rating { color: #fbbc05; font-size: 0.9rem; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; background: #eee; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #555; }
     </style>
 </head>
 <body>
@@ -85,7 +91,7 @@
                             <i class="bi bi-telephone-outbound-fill me-2"></i> Pedir Taxi Ahora
                         </a>
                         <a href="https://wa.me/123456789?text=Hola, necesito un taxi en mi ubicación" class="btn btn-action btn-whatsapp">
-                            <i class="bi bi-whatsapp me-2"></i> WhatsApp Directo
+                            <i class="bi bi-whatsapp me-2"></i> WhatsApp
                         </a>
                     </div>
 
@@ -101,23 +107,61 @@
                                 style="border:0" 
                                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCuFEjycWBUxeJ32jWckekiIutLgcul21Q&q=Mendoza,Argentina" 
                                 allowfullscreen>
-                            </iframe>
-                            
+                            </iframe>                            
                         </div>
                     </div>
 
                     <div class="row mt-4 g-2 text-center small text-secondary">
                         <div class="col-4 border-end">
-                            <i class="bi bi-clock-fill text-primary d-block fs-4 mb-1"></i> 10 min
+                            <i class="bi bi-clock-fill text-primary d-block fs-4 mb-1"></i> 15 min
                         </div>
                         <div class="col-4 border-end">
-                            <i class="bi bi-shield-check text-success d-block fs-4 mb-1"></i> Seguro
+                            <i class="bi bi-shield-check text-success d-block fs-4 mb-1"></i> Viaje Seguro
                         </div>
                         <div class="col-4">
-                            <i class="bi bi-cash-stack text-warning d-block fs-4 mb-1"></i> $ Justo
+                            <i class="bi bi-cash-stack text-warning d-block fs-4 mb-1"></i> Precio Justo
                         </div>
                     </div>
                 </div>
+                
+                    <div class="row mt-5 g-2 px-2">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold mb-0">Opiniones de clientes</h5>
+                        <div class="text-end">
+                            <span class="fw-bold">4.9</span>
+                            <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="review-card shadow-sm">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="avatar me-3"><img src="review-01.png" class="google-logo" alt="G"></div>
+                            <div class="flex-grow-1">
+                                <p class="mb-0 fw-bold small">Juan Pérez </p>
+                                <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                            </div>
+                            <small class="text-muted">hace 2 días</small>
+                        </div>
+                        <p class="small text-muted mb-0">"Llegaron en 5 minutos al aeropuerto. El conductor fue muy amable y el auto estaba impecable. Muy recomendado."</p>
+                    </div>
+
+                    <div class="review-card shadow-sm">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="avatar me-3" style="background:#4285F4; color:white;">ML</div>
+                            <div class="flex-grow-1">
+                                <p class="mb-0 fw-bold small">María López <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Logo.svg" class="google-logo" alt="G"></p>
+                                <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                            </div>
+                            <small class="text-muted">hace 1 semana</small>
+                        </div>
+                        <p class="small text-muted mb-0">"Servicio confiable y precio justo. Pedí por WhatsApp y la respuesta fue inmediata."</p>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <a href="https://share.google/GCooYCxPtwu4wiGdL" class="text-decoration-none small fw-bold text-primary">Ver las 148 reseñas en Google Maps</a>
+                    </div>
+                </div>
+
 
                 <div class="text-center mt-4 text-muted">
                     <p class="mb-0">"El servicio más rápido de la ciudad"</p>
