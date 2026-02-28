@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
@@ -33,10 +32,10 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="taxi-puerta.webp" class="d-block w-100" alt="Taxi 2">
+                <img src="taxi-gps.webp" class="d-block w-100" alt="Taxi 2">
                 <div class="carousel-caption">
-                    <h2 class="fw-bold">Disponible 24 Horas</h2>
-                    <p class="fw-medium fs-6">Nosotros vamos</p>
+                    <h2 class="fw-bold">Viajá tranquilo</h2>
+                    <p class="fw-medium fs-6">Vehículos monitoreados</p>
                 </div>
             </div>
             <div class="carousel-item">
@@ -59,58 +58,166 @@
 
     <main class="container mb-5">
         <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-5">
-                <div class="card main-card text-center">
-                    <h5 class="fw-bold mb-3">Tu ubicación detectada:</h5>
-                    
-                    <div id="map">Cargando mapa...</div>
+            <div class="col-md-7 col-lg-5">
 
-                    <div class="d-grid gap-3">
-                        <button id="whatsappBtn" class="btn btn-whatsapp pulse">
-                            <i class="bi bi-whatsapp me-2"></i> ENVIAR MI UBICACIÓN
-                        </button>
-                        
-                        <a href="tel:+549261000000" class="btn btn-dark p-3 fw-bold">
-                            <i class="bi bi-telephone-fill me-2"></i> O LLAMAR POR TELÉFONO
-                        </a>
+                <div class="card main-card">
+                    <div class="mt-4 px-2">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <small class="fw-bold text-muted">
+            <i class="bi bi-geo-alt-fill text-danger pulse"></i> 
+            <span id="ubicacion-status">Detectando tu ubicación...</span>
+        </small>
+        <button onclick="obtenerUbicacion()" class="btn btn-sm btn-outline-primary border-0">
+            <i class="bi bi-arrow-clockwise"></i> Actualizar GPS
+        </button>
+    </div>
+    
+    <div id="map" style="height: 250px; width: 100%; border-radius: 15px; border: 2px solid #eee;" class="shadow-sm"></div>
+</div>
+
+<div class="d-grid gap-3 mt-4">
+    <a href="tel:+123456789" class="btn btn-action btn-call shadow">
+        <i class="bi bi-telephone-fill me-2"></i> Llamar Ahora
+    </a>
+    <a href="#" id="btn-ws-dinamico" class="btn btn-action btn-whatsapp shadow">
+        <i class="bi bi-whatsapp me-2"></i> Pedir por WhatsApp
+    </a>
+</div>
+
+                    <script>
+                        let map, marker, geocoder;
+let userLatLng = ""; 
+let userAddress = "mi ubicación actual";
+const miTelefono = "549261XXXXXXX"; // REEMPLAZA CON TU NÚMERO (Código de país + área + número)
+
+function initMap() {
+    // Ubicación inicial (Maipú, Mendoza)
+    const centroInicial = { lat: -32.9819, lng: -68.7897 };
+    
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 17,
+        center: centroInicial,
+        disableDefaultUI: true,
+        styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }] // Mapa limpio
+    });
+
+    marker = new google.maps.Marker({
+        map: map,
+        position: centroInicial,
+        animation: google.maps.Animation.DROP,
+        icon: "https://maps.google.com/mapfiles/ms/icons/taxi.png" // Icono de taxi
+    });
+
+    geocoder = new google.maps.Geocoder();
+    
+    // Ejecutar detección al cargar
+    obtenerUbicacion();
+}
+
+function obtenerUbicacion() {
+    document.getElementById('ubicacion-status').innerText = "Localizando...";
+    
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+            };
+            
+            userLatLng = `https://www.google.com/maps?q=${pos.lat},${pos.lng}`;
+            
+            marker.setPosition(pos);
+            map.setCenter(pos);
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(() => marker.setAnimation(null), 1500);
+
+            // Obtener la dirección escrita
+            geocoder.geocode({ location: pos }, (results, status) => {
+                if (status === "OK" && results[0]) {
+                    userAddress = results[0].formatted_address;
+                    document.getElementById('ubicacion-status').innerText = "Ubicación confirmada";
+                    actualizarEnlaceWhatsApp();
+                }
+            });
+        }, () => {
+            document.getElementById('ubicacion-status').innerText = "Error GPS. Activa tu ubicación.";
+        });
+    }
+}
+
+function actualizarEnlaceWhatsApp() {
+    const textoBase = `🚕 *SOLICITUD DE TAXI*\n\n📍 *Ubicación:* ${userAddress}\n\n🗺️ *Mapa:* ${userLatLng}`;
+    const urlFinal = `https://wa.me/${miTelefono}?text=${encodeURIComponent(textoBase)}`;
+    document.getElementById('btn-ws-dinamico').href = urlFinal;
+}
+                    </script>
+                    <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuFEjycWBUxeJ32jWckekiIutLgcul21Q&callback=initMap"></script>
+
+
+                    <div class="row mt-4 g-2 text-center small text-secondary">
+                        <div class="col-4 border-end">
+                            <i class="bi bi-clock-fill text-primary d-block fs-4 mb-1"></i> 15 min
+                        </div>
+                        <div class="col-4 border-end">
+                            <i class="bi bi-shield-check text-success d-block fs-4 mb-1"></i> Viaje Seguro
+                        </div>
+                        <div class="col-4">
+                            <i class="bi bi-cash-stack text-warning d-block fs-4 mb-1"></i> Precio Justo
+                        </div>
                     </div>
-                    <p class="small text-muted mt-3">Llegamos a tu puerta en minutos.</p>
+                </div>
+
+                <div class="row mt-5 g-2 px-2">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold mb-0">Opiniones de clientes</h5>
+                        <div class="text-end">
+                            <span class="fw-bold">4.9</span>
+                            <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                    class="bi bi-star-fill"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="review-card shadow-lg">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="avatar me-3"><img src="review-01.png" class="img-responsive" alt="G"></div>
+                            <div class="flex-grow-1">
+                                <p class="mb-0 fw-bold small">Juan Pérez </p>
+                                <span class="star-rating"><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                            </div>
+                            <small class="text-muted">hace 2 días</small>
+                        </div>
+                        <p class="small text-muted mb-0">"Llegaron en 5 minutos al aeropuerto. El conductor fue muy
+                            amable y el auto estaba impecable. Muy recomendado."</p>
+                    </div>
+
+                    <div class="review-card shadow-lg">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="avatar me-3"><img src="review-01.png" class="img-responsive" alt="G"></div>
+                            <div class="flex-grow-1">
+                                <p class="mb-0 fw-bold small">Javier García </p>
+                                <span class="star-rating"><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                            </div>
+                            <small class="text-muted">hace 1 semana</small>
+                        </div>
+                        <p class="small text-muted mb-0">"Servicio confiable y precio justo. Pedí por WhatsApp y la
+                            respuesta fue inmediata."</p>
+                    </div>
+
+
+                    <div class="text-center mt-3">
+                        <a href="https://share.google/GCooYCxPtwu4wiGdL"
+                            class="text-decoration-none small fw-bold text-primary">Ver las 148 reseñas en Google
+                            Maps</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <script>
-        let map, marker;
-        let userCoords = { lat: -32.9887, lng: -68.7775 }; // Default: Maipú, Mendoza
-        const taxiPhone = "2613871088"; // Reemplaza con tu número real
-
-        function initMap() {
-            map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 16,
-                center: userCoords,
-                disableDefaultUI: true
-            });
-            marker = new google.maps.Marker({ map: map, position: userCoords });
-
-            // Intentar obtener ubicación real
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition((position) => {
-                    userCoords = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-                    map.setCenter(userCoords);
-                    marker.setPosition(userCoords);
-                });
-            }
-        }
-
-        document.getElementById("whatsappBtn").onclick = function() {
-            const googleMapsUrl = `https://www.google.com/maps?q=${userCoords.lat},${userCoords.lng}`;
-            const message = encodeURIComponent(`Hola Taxi Express, necesito una unidad en mi ubicación actual: ${googleMapsUrl}`);
-            window.location.href = `https://wa.me/${taxiPhone}?text=${message}`;
-        };
-    </script>
-
     </main>
     <footer>
         <div class="container">
@@ -151,7 +258,7 @@
         </div>
     </footer>
 
-     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuFEjycWBUxeJ32jWckekiIutLgcul21Q&callback=initMap"></script>    <script src="/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
