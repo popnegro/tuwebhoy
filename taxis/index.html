@@ -63,23 +63,103 @@
 
                 <div class="card main-card">
                     <div class="d-grid gap-3">
-                        <a href="https://wa.link/cmfv5c" class="btn btn-action btn-call pulse">
-                            <i class="bi bi-whatsapp me-2"></i> Pedir Taxi Ahora
+                        <a href="#" id="btn-ws-dinamico" target="_blank" class="btn btn-action btn-whatsapp shadow">
+                            <i class="bi bi-whatsapp me-2"></i> Pedir por WhatsApp
                         </a>
                         
                     </div>
 
-                    <div class="mt-4">
-                        <p class="text-center fw-bold text-muted mb-2">
-                            <i class="bi bi-geo-alt-fill text-danger"></i> Unidades activas cerca de vos:
-                        </p>
-                        <div class="map-container shadow-sm">
-                            <iframe width="100%" height="150" frameborder="0" style="border:0"
-                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCuFEjycWBUxeJ32jWckekiIutLgcul21Q&q=Mendoza,Argentina"
-                                allowfullscreen>
-                            </iframe>
+                    <div class="mt-4 px-2">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <small class="fw-bold text-muted">
+                                <i class="bi bi-geo-alt-fill text-danger"></i>
+                                <span id="ubicacion-status text-truncate">Detectando...</span>
+                            </small>
+                            <button onclick="obtenerUbicacion()" class="btn btn-sm btn-outline-primary border-0"
+                                title="Actualizar ubicación">
+                                <i class="bi bi-arrow-clockwise"></i> Actualizar
+                            </button>
+                        </div>
+
+                        <div id="map" style="height: 200px; width: 100%; border-radius: 15px; border: 2px solid #fff;"
+                            class="shadow-sm"></div>
+
+                        <div class="bg-light p-2 mt-2 rounded border">
+                            <p class="small mb-0 text-center"><strong>Tu dirección:</strong> <br> <span
+                                    id="direccion-texto" class="text-secondary">Buscando...</span></p>
                         </div>
                     </div>
+
+                    <script>
+                        let map, marker, geocoder;
+                        let userLatLng = "";
+                        let userAddress = "Ubicación no especificada";
+
+                        function initMap() {
+                            // Maipú, Mendoza por defecto
+                            const defaultLoc = { lat: -32.9819, lng: -68.7897 };
+
+                            map = new google.maps.Map(document.getElementById("map"), {
+                                zoom: 16,
+                                center: defaultLoc,
+                                disableDefaultUI: true,
+                                styles: [{ "featureType": "poi", "stylers": [{ "visibility": "off" }] }] // Mapa limpio
+                            });
+
+                            marker = new google.maps.Marker({
+                                map: map,
+                                position: defaultLoc,
+                                animation: google.maps.Animation.DROP,
+                                icon: {
+                                    url: "https://maps.google.com/mapfiles/ms/icons/taxi.png"
+                                }
+                            });
+
+                            geocoder = new google.maps.Geocoder();
+                            obtenerUbicacion(); // Intentar localizar al cargar
+                        }
+
+                        function obtenerUbicacion() {
+                            document.getElementById('ubicacion-status').innerText = "Actualizando...";
+
+                            if (navigator.geolocation) {
+                                navigator.geolocation.getCurrentPosition((position) => {
+                                    const pos = {
+                                        lat: position.coords.latitude,
+                                        lng: position.coords.longitude,
+                                    };
+
+                                    userLatLng = `https://www.google.com/maps?q=${pos.lat},${pos.lng}`;
+
+                                    marker.setPosition(pos);
+                                    map.setCenter(pos);
+                                    document.getElementById('ubicacion-status').innerText = "Ubicación encontrada";
+
+                                    // Traducir coordenadas a dirección
+                                    geocoder.geocode({ location: pos }, (results, status) => {
+                                        if (status === "OK" && results[0]) {
+                                            userAddress = results[0].formatted_address;
+                                            document.getElementById('direccion-texto').innerText = userAddress;
+                                            actualizarBotonWhatsApp();
+                                        }
+                                    });
+                                }, () => {
+                                    document.getElementById('ubicacion-status').innerText = "Error de GPS";
+                                    document.getElementById('direccion-texto').innerText = "Por favor, escribe tu dirección al llamar.";
+                                });
+                            }
+                        }
+
+                        function actualizarBotonWhatsApp() {
+                            const telefono = "5492613871088"; // Reemplazar con el número real
+                            const texto = `Hola, necesito un taxi en: *${userAddress}*. \n\nUbicación GPS: ${userLatLng}`;
+                            const url = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
+                            document.getElementById('btn-ws-dinamico').href = url;
+                        }
+                    </script>
+
+                    <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuFEjycWBUxeJ32jWckekiIutLgcul21Q&callback=initMap"></script>
 
                     <div class="row mt-4 g-2 text-center small text-secondary">
                         <div class="col-4 border-end">
@@ -120,7 +200,7 @@
                             amable y el auto estaba impecable. Muy recomendado."</p>
                     </div>
 
-                     <div class="review-card shadow-lg">
+                    <div class="review-card shadow-lg">
                         <div class="d-flex align-items-center mb-2">
                             <div class="avatar me-3"><img src="review-01.png" class="img-responsive" alt="G"></div>
                             <div class="flex-grow-1">
@@ -134,7 +214,7 @@
                         <p class="small text-muted mb-0">"Servicio confiable y precio justo. Pedí por WhatsApp y la
                             respuesta fue inmediata."</p>
                     </div>
-                   
+
 
                     <div class="text-center mt-3">
                         <a href="https://share.google/GCooYCxPtwu4wiGdL"
@@ -145,45 +225,44 @@
             </div>
         </div>
     </main>
- <footer>
-                    <div class="container">
-                        <div class="row g-4">
-                            <div class="col-md-4 text-center text-md-start">
-                                <h6 class="mb-3">TAXI EXPRESS</h6>
-                                <p class="small mb-2">Tu servicio de confianza en Mendoza. Rapidez, seguridad y
-                                    confort en cada viaje, las 24 horas.</p>
-                                <p class="small fw-bold var(--taxi-yellow)">Llámanos: <a href="tel:+123456789"
-                                        class="text-white">+1 234 567 89</a></p>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <h6 class="mb-3">Servicios</h6>
-                                <ul class="list-unstyled small d-inline-block text-start">
-                                    <li><i class="bi bi-chevron-right text-warning"></i> Viajes Locales</li>
-                                    <li><i class="bi bi-chevron-right text-warning"></i> Traslados al Aeropuerto</li>
-                                    <li><i class="bi bi-chevron-right text-warning"></i> Servicio Empresarial</li>
-                                    <li><i class="bi bi-chevron-right text-warning"></i> Reservas Programadas</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-4 text-center text-md-end">
-                                <h6 class="mb-3">Síguenos</h6>
-                                <div class="d-flex justify-content-center justify-content-md-end">
-                                    <a href="#" class="social-icon bi bi-facebook" aria-label="Facebook"></a>
-                                    <a href="#" class="social-icon bi bi-instagram" aria-label="Instagram"></a>
-                                    <a href="#" class="social-icon bi bi-twitter-x" aria-label="Twitter X"></a>
-                                </div>
-                                <p class="small mt-3">Escríbenos: <a
-                                        href="mailto:info@taxiexpress.com">info@taxiexpress.com</a></p>
-                            </div>
-                        </div>
-
-                        <div class="row footer-bottom text-center">
-                            <div class="col-12">
-                                <p class="small mb-0">© 2026 Central Taxi Express. <br>
-                                    Diseñado para carga rápida en móviles.</p>
-                            </div>
-                        </div>
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4 text-center text-md-start">
+                    <h6 class="mb-3">TAXI EXPRESS</h6>
+                    <p class="small mb-2">Tu servicio de confianza en Mendoza. Rapidez, seguridad y
+                        confort en cada viaje, las 24 horas.</p>
+                    <p class="small fw-bold var(--taxi-yellow)">Llámanos: <a href="tel:+123456789" class="text-white">+1
+                            234 567 89</a></p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h6 class="mb-3">Servicios</h6>
+                    <ul class="list-unstyled small d-inline-block text-start">
+                        <li><i class="bi bi-chevron-right text-warning"></i> Viajes Locales</li>
+                        <li><i class="bi bi-chevron-right text-warning"></i> Traslados al Aeropuerto</li>
+                        <li><i class="bi bi-chevron-right text-warning"></i> Servicio Empresarial</li>
+                        <li><i class="bi bi-chevron-right text-warning"></i> Reservas Programadas</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <h6 class="mb-3">Síguenos</h6>
+                    <div class="d-flex justify-content-center justify-content-md-end">
+                        <a href="#" class="social-icon bi bi-facebook" aria-label="Facebook"></a>
+                        <a href="#" class="social-icon bi bi-instagram" aria-label="Instagram"></a>
+                        <a href="#" class="social-icon bi bi-twitter-x" aria-label="Twitter X"></a>
                     </div>
-                </footer>
+                    <p class="small mt-3">Escríbenos: <a href="mailto:info@taxiexpress.com">info@taxiexpress.com</a></p>
+                </div>
+            </div>
+
+            <div class="row footer-bottom text-center">
+                <div class="col-12">
+                    <p class="small mb-0">© 2026 Central Taxi Express. <br>
+                        Diseñado para carga rápida en móviles.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
