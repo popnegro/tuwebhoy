@@ -1,412 +1,543 @@
 <!DOCTYPE html>
-<html itemscope itemtype="http://schema.org/WebPage" lang="es-AR">
-
+<html lang="es">
 <head>
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-N98NDQGJ');</script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2T3LZNLJP"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {dataLaye  r.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-T2T3LZNLJP', { 'debug_mode': true });
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17677506833"></script>
-    <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'AW-17677506833'); </script>
-    <script> gtag('event', 'conversion', { 'send_to': 'AW-17677506833/oRJYCIvr0rMbEJGype1B' }); </script>
-    <link rel="dns-prefetch" href="//googletagmanager.com">
-    <link rel="dns-prefetch" href="//www.google-analytics.com">
-    <link rel="dns-prefetch" href="//ajax.googleapis.com">
-    <link rel="dns-prefetch" href="//googleadservices.com">
-    <link rel="dns-prefetch" href="//gstatic.com">
-    <meta name="google-site-verification" content="kBHemOJDavLgLSxbaPdBg8OugZiCQyeXamC-NlsLgio" />
-    <meta http-equiv="Cache-Control: max-age=31536000" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests 'self';">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index,follow" />
-    <meta name="x-robots-tag" content="index,follow" />
-    <meta name="googlebot" content="index,follow" />
-    <meta name="theme-color" content="#0fa" />
-    <title>Mudanzas Mitre Buenos Aires Mudanzas rápidas, seguras y sin estrés en Buenos Aires</title>
-    <meta name="description" content="Embalaje, transporte y descarga profesional. Llamanos al +541157455737"
-        lang="es-AR">
-    <meta itemprop="keywords" content="mudanzas en buenos aires, mudanzas buenos aires, empresa de mudanza en buenos aires, mudanzas,fletes buenos aires, mudanzas combinadas, embalaje, mudanzas full, mudanzas express, mudanzas seguras, mudanzas baratas,mudanzas económicas, mudanzas buenos aires, mudanzas argentina, mudanzas buenos aires, mudanzas caba, mudanzas cordoba, mudanzas neuquen, mudanzas san luis, mudanzas san juan, mudanzas puerta a puerta, mudanzas, traslados, mudanzas empresariales, mudanzas corporativas, mudanzas de oficinas, empresas, particulares, casas, edificios, oficinas, empresariales, corporativas, comercios, mudanzas inteligentes, guardamuebles, bauleras, bauleras privadas, depositos, deposito, buenos aires, GBA, zona, sur, oeste, norte, interior, costa, Embalaje de pertenencias para mudanzas, Mudanzas dentro del estado,
-            Servicio local de mudanzas, Mudanzas relacionadas con empresas y corporaciones, Servicios de almacenamiento en almacenes, Mudanzas a cualquier punto de la Argentina, Servicios de mudanzas compartidos, mudanzas de urgencia, empresas de mudanzas al interior, Mudanza, Fletalo, Bultos grandes, Fletero, Envios, mudanzas al interior del país precios, Servicio de mudanza completo, transporte de mudanza de larga distancia,
-            mudanzas buenos aires precios, camion de mudanzas precios" lang="es-AR">
-    <link rel="canonical" href="https://mudanzasmitre.com.ar" lang="es-AR">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" as="style" href="main.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N98NDQGJ" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-</head>
+    <title>Mudanzas Express Argentina | Traslados Seguros y Sin Estrés</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-blue: #003566;
+            --accent-orange: #ffc300;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        .hero {
+            background: linear-gradient(rgba(0,53,102,0.8), rgba(0,53,102,0.8)), url('https://images.unsplash.com/photo-1600518464441-9154a4dba21b?q=80&w=1500&auto=format&fit=crop');
+            background-size: cover; background-position: center;
+            color: white; padding: 100px 0;
+        }
 
+        .service-card {
+            border: none; border-radius: 15px; transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .icon-box {
+            width: 60px; height: 60px; background: var(--accent-orange);
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 12px; margin-bottom: 20px; font-size: 1.5rem;
+        }
+
+        .google-review {
+            background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 20px;
+        }
+        .star-rating { color: #fbbc05; }
+
+        .btn-cta {
+            background-color: var(--accent-orange); color: #000;
+            font-weight: bold; padding: 12px 30px; border-radius: 50px; border: none;
+        }
+        .btn-cta:hover { background-color: #ffd60a; }
+
+        /* Botón Flotante de WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Animación de pulso suave */
+.whatsapp-float::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #25d366;
+    opacity: 0.7;
+    animation: pulse-whatsapp 2s infinite;
+    z-index: -1;
+}
+
+@keyframes pulse-whatsapp {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Estilos para el Navbar */
+.navbar {
+    transition: all 0.5s ease;
+    padding: 15px 0;
+}
+.navbar.scrolled {
+    background-color: var(--primary-blue) !important;
+    padding: 10px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Ajustes del Carrusel */
+#carouselMudanzas .carousel-item {
+    height: 70vh; /* Altura del 70% de la pantalla */
+    min-height: 400px;
+}
+#carouselMudanzas img {
+    object-fit: cover;
+    height: 100%;
+    filter: brightness(0.5); /* Oscurece las fotos para que el texto resalte */
+}
+.carousel-caption {
+    bottom: 25%;
+    z-index: 2;
+}
+    </style>
+</head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Mudanzas Mitre</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#inicio">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#nosotros">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#servicios">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#destinos">Destinos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contacto">Contacto</a>
-                    </li>
-                </ul>
+   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNavbar">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-3" href="#">
+            <i class="bi bi-truck me-2 text-warning"></i>MUDANZAS<span class="text-warning">ARG</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                <li class="nav-item"><a class="nav-link" href="#reviews">Opiniones</a></li>
+                <li class="nav-item ms-lg-3">
+                    <a class="btn btn-warning fw-bold rounded-pill px-4" href="#cotizar">COTIZAR AHORA</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
+<header id="carouselMudanzas" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselMudanzas" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carouselMudanzas" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carouselMudanzas" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?q=80&w=1500" class="d-block w-100" alt="Camión de mudanzas">
+            <div class="carousel-caption">
+                <h2 class="display-4 fw-bold">Mudanzas Locales y Nacionales</h2>
+                <p class="lead">Llegamos a cada rincón de Argentina con puntualidad garantizada.</p>
             </div>
         </div>
-    </nav>
-
-    <header style="position:relative; height:50vh; overflow:hidden;" id="inicio">
-        <video autoplay muted loop playsinline
-            style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;">
-            <source src="video-home.mp4" type="video/mp4">
-        </video>
-
-        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.55); z-index:1;">
-        </div>
-
-        <div
-            style="position:relative; z-index:2; display:flex; flex-direction:column; justify-content:center; align-items:center; height:100%; text-align:center; color:#fff; padding:0 20px;">
-            <h1 style="font-size:clamp(2rem,5vw,3.5rem); font-weight:700; margin-bottom:20px;">
-                Mudanzas Mitre <br>Buenos Aires
-            </h1>
-            <h2 style="font-size:clamp(1.1rem,2vw,1.3rem); max-width:700px; margin-bottom:30px;">
-                Mudanzas rápidas, seguras y sin estrés en Buenos Aires </h2>
-            </p>
-
-            <div class="mt-0">
-                <a href="https://www.tiktok.com/@mudanzasmitre2025?_t=ZM-90bRfek8Qwu&_r=1" target="_blank"
-                    class="icon-rss mx-3"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="https://www.instagram.com/mudanzasmitre2025" target="_blank" class="icon-rss mx-3"><i
-                        class="fa-brands fa-square-instagram"></i></a>
-                <a href="https://www.facebook.com/mitremudanzas/" target="_blank" class="icon-rss mx-3"><i
-                        class="fa-brands fa-facebook"></i></a>
-                <a href="https://www.youtube.com/@mudanzasmitreycmd?feature=shared" target="_blank"
-                    class="icon-rss mx-3"><i class="fa-brands fa-youtube"></i></a>
-            </div>
-            </a>
-        </div>
-
-
-    </header>
-
-    <section id="nosotros" class="py-5 bg-light">
-        <div class="container">
-            <div class="content">
-                <h2 class="text-primary">Embalaje, transporte y descarga profesional</h2>
-                <p class="lead text-dark">Trabajamos desde el año 1990 con solidez, convencimiento y confianza en
-                    nuestras
-                    habilidades y recursos</p>
+        <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1500" class="d-block w-100" alt="Embalaje profesional">
+            <div class="carousel-caption">
+                <h2 class="display-4 fw-bold">Máximo Cuidado con tus Bienes</h2>
+                <p class="lead">Personal capacitado en embalaje de objetos frágiles y obras de arte.</p>
             </div>
         </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card feature-box">
-                        <div id="carouselExample01" class="carousel slide">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="mudanzas-mitre-01.webp" class="d-block w-100 border-round" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="mudanzas-mitre-02.webp" class="d-block w-100 border-round" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="mudanzas-mitre-03.webp" class="d-block w-100 border-round" alt="...">
-                                </div>
-
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample01"
-                                    data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample01"
-                                    data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
-                            <div class="service-card card-body">
-                                <h3 class="card-title">Sobre nosotros</h3>
-                                <p class="card-body">Mudanzas Mitre es una empresa argentina que se dedica a ofrecer
-                                    servicios de mudanzas, logística y traslados a lo largo de todo el país. Nuestra
-                                    central
-                                    está ubicada en Buenos Aires.
-                                </p>
-                                <a href="https://wa.link/ag0ukq" target="_blank" class="btn btn-primary">Reservar
-                                    mudanza</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card feature-box">
-                        <div id="carouselExample02" class="carousel slide">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="mudanzas-mitre-05.webp" class="d-block w-100 border-round" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="mudanzas-mitre-06.webp" class="d-block w-100 border-round" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="mudanzas-mitre-07.webp" class="d-block w-100 border-round" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="mudanzas-mitre-08.webp" class="d-block w-100 border-round" alt="...">
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample02"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample02"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        <div class="service-card card-body">
-                            <h3 class="card-title">¿Por qué elegirnos?</h3>
-                            <ul class="list-unstyled mt-3 mb-4">
-                                <li>Puntualidad y responsabilidad</li>
-                                <li>Presupuestos claros, sin sorpresas</li>
-                                <li>Seguimiento en tiempo real</li>
-                                <li>Personal capacitado y amable</li>
-                                <li>Cobertura en todo Buenos Aires y hacia toda Argentina</li>
-                            </ul>
-                            <a href="https://wa.link/ag0ukq" target="_blank" class="btn btn-primary">Reservar
-                                mudanza</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card feature-box">
-                        <div id="carouselExample03" class="carousel slide">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="mudanzas-mitre-09.webp" class="d-block w-100 border-round" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="mudanzas-mitre-10.webp" class="d-block w-100 border-round" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="mudanzas-mitre-11.webp" class="d-block w-100 border-round" alt="...">
-                                </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample03"
-                                    data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample03"
-                                    data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
-                            <div class="service-card card-body">
-                                <h3 class="card-title">Beneficios Incluidos</h3>
-                                <p class="card-body">Nos ocupamos de todos los detalles para que tu mudanza sea exitosa
-                                    y confiable.
-                                    Más de 35 años de experiencia nos respaldan. Nuestro equipo está conformado por
-                                    personal responsable y dedicado.
-                                </p>
-                                <a href="https://wa.link/ag0ukq" target="_blank" class="btn btn-primary">Reservar
-                                    mudanza</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+        <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1500" class="d-block w-100" alt="Mudanza de oficina">
+            <div class="carousel-caption">
+                <h2 class="display-4 fw-bold">Traslados Corporativos</h2>
+                <p class="lead">Especialistas en mudanzas de oficinas y depósitos industriales.</p>
             </div>
         </div>
-    </section>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselMudanzas" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselMudanzas" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</header>
 
-    <section id="servicios" class="py-5 bg-primary">
-        <div class="container">
-            <div class="content text-light">
-                <h3 style="font-weight:700;"> Servicios de mudancera en CABA y Capital Federal</h3>
-                <p class="lead">Nuestro serviciod de mudanza abarca todo Buenos Aires y el resto de Argentina</p>
-            </div>
-            <div class="container">
-                <div class="row align-items-md-center">
-                    <div class="col-md-9 mb-4">
-                        <figure class="figure">
-                            <img src="mudanzas-mitre-00.webp" class="d-block w-100 border-round" alt="...">
-                        </figure>
+<section id="nosotros" class="py-5">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <div class="position-relative">
+                    <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?q=80&w=1000&auto=format&fit=crop" 
+                         class="img-fluid rounded-4 shadow-lg" alt="Equipo de Mudanzas ARG">
+                    <div class="position-absolute bottom-0 start-0 bg-warning p-4 rounded-4 shadow m-3 d-none d-md-block">
+                        <h2 class="fw-bold mb-0 text-dark">15+</h2>
+                        <p class="small mb-0 fw-bold">Años de Trayectoria</p>
                     </div>
                 </div>
             </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-12">
-                        <div class="service-card text-center text-dark">
-                            <h3 style="font-size: 1.5rem;">🏡 Mudanzas residenciales</h3>
-                            <p>Trasladamos tus muebles y pertenencias con cuidado y puntualidad, dentro y desde Buenos
-                                Aires a otras provincias</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3">
-                        <div class="service-card text-center text-dark">
-                            <h3 style="font-size: 1.5rem;">🏢 Mudanzas corporativas</h3>
-                            <p>Minimizamos tiempos muertos. Coordinamos todo para que tu empresa siga funcionando sin
-                                interrupciones</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3">
-                        <div class="service-card text-center text-dark">
-                            <h3 style="font-size: 1.5rem;">📦 Embalaje profesional</h3>
-                            <p>Protegemos tus objetos con materiales de alta resistencia. Opciones de embalaje completo
-                                o parcial</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-12">
-                        <div class="service-card text-center text-dark">
-                            <h3 style="font-size: 1.5rem;">🔧 Personal capacitado</h3>
-                            <p>Te ofrecemos como servicio el alquiler de peones por hora para movimientos en altura y
-                                descarga</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
-
-
-    <!-- ======= Sección Cobertura - Mudanzas Mitre ======= -->
-    <section id="destinos" class="py-5" style="background:#f9fafb; padding:60px 20px;">
-        <div style="max-width:1100px; margin:0 auto;">
-            <div style="text-align:center; margin-bottom:40px;">
-                <h3 style="font-weight:500; color:#0b74de;">Cobertura en Buenos Aires</h3>
-                <p style="color:#111; max-width:700px; margin:10px auto;">
-                    En <strong>Mudanzas Mitre</strong> realizamos mudanzas en toda la <strong>Provincia de Buenos
-                        Aires</strong>.
-                    Trabajamos con personal propio, vehículos asegurados y logística en más de 130 partidos.
+            
+            <div class="col-lg-6">
+                <h6 class="text-primary fw-bold text-uppercase">Nuestra Historia</h6>
+                <h2 class="display-5 fw-bold mb-4">Especialistas en cuidar lo que más querés</h2>
+                <p class="lead text-muted">Fundada en Maipú, Mendoza, <strong>Mudanzas ARG</strong> nació con una misión clara: profesionalizar el traslado de hogares en toda la Argentina.</p>
+                <p class="mb-4 text-secondary">
+                    Entendemos que una mudanza no es solo mover cajas; es el inicio de una nueva etapa en tu vida. Por eso, invertimos en capacitación constante para nuestro personal y en la flota más moderna del mercado. Somos una empresa familiar que trata tus pertenencias como si fueran propias.
                 </p>
-            </div>
-
-            <div style="text-align:center; margin-bottom:25px;">
-                <input type="search" id="busqueda" placeholder="Buscar partido (ej. La Plata, Quilmes, Pilar)"
-                    style="padding:12px 16px; width:100%; max-width:480px; border-radius:10px; border:1px solid #ccc; font-size:1rem; margin-bottom: 15px;">
-            </div>
-
-            <div id="listado-partidos"
-                style="display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:10px;">
-                <!-- Listado dinámico generado por JavaScript -->
-            </div>
-
-            <div id="contador" style="text-align:center; margin-top:15px; margin-bottom: 15px; color:#666;"></div>
-
-            <div style="text-align:center; margin-top:40px;">
-                <a href="https://wa.link/ag0ukq" target="_blank"
-                    style="background:#0b74de; color:#fff; padding:14px 28px; border-radius:50px; text-decoration:none; font-weight:600; font-size:1rem;">
-                    📦 Solicitar presupuesto
-                </a>
-            </div>
-        </div>
-
-        <script>
-            const partidos = [
-                "Adolfo Alsina", "Adolfo Gonzales Chaves", "Alberti", "Almirante Brown", "Arrecifes", "Avellaneda", "Ayacucho", "Azul",
-                "Bahía Blanca", "Balcarce", "Baradero", "Benito Juárez", "Berazategui", "Berisso", "Bolívar", "Bragado", "Brandsen",
-                "Campana", "Cañuelas", "Capitán Sarmiento", "Carlos Casares", "Carlos Tejedor", "Carmen de Areco", "Castelli", "Chacabuco",
-                "Chascomús", "Chivilcoy", "Colón", "Coronel Dorrego", "Coronel Pringles", "Coronel Rosales", "Coronel Suárez", "Daireaux",
-                "Dolores", "Ensenada", "Escobar", "Esteban Echeverría", "Exaltación de la Cruz", "Ezeiza", "Florencio Varela", "Florentino Ameghino",
-                "General Alvarado", "General Alvear", "General Arenales", "General Belgrano", "General Guido", "General La Madrid",
-                "General Las Heras", "General Lavalle", "General Madariaga", "General Paz", "General Pinto", "General Pueyrredón",
-                "General Rodríguez", "General San Martín", "General Viamonte", "General Villegas", "Guaminí", "Hipólito Yrigoyen",
-                "Hurlingham", "Ituzaingó", "José C. Paz", "Junín", "La Costa", "La Matanza", "La Plata", "Lanús", "Laprida", "Las Flores",
-                "Leandro N. Alem", "Lezama", "Lincoln", "Lobería", "Lobos", "Lomas de Zamora", "Luján", "Magdalena", "Maipú",
-                "Malvinas Argentinas", "Mar Chiquita", "Marcos Paz", "Mercedes", "Merlo", "Monte", "Monte Hermoso", "Moreno", "Morón",
-                "Navarro", "Necochea", "Nueve de Julio", "Olavarría", "Patagones", "Pehuajó", "Pellegrini", "Pergamino", "Pila", "Pilar",
-                "Pinamar", "Presidente Perón", "Puan", "Punta Indio", "Quilmes", "Ramallo", "Rauch", "Rivadavia", "Rojas", "Roque Pérez",
-                "Saavedra", "Saladillo", "Salliqueló", "Salto", "San Andrés de Giles", "San Antonio de Areco", "San Cayetano", "San Fernando",
-                "San Isidro", "San Miguel", "San Nicolás", "San Pedro", "San Vicente", "Suipacha", "Tandil", "Tapalqué", "Tigre", "Tordillo",
-                "Tornquist", "Trenque Lauquen", "Tres Arroyos", "Tres de Febrero", "Tres Lomas", "Veinticinco de Mayo", "Vicente López",
-                "Villa Gesell", "Villarino", "Zárate"
-            ];
-
-            const listado = document.getElementById('listado-partidos');
-            const buscador = document.getElementById('busqueda');
-            const contador = document.getElementById('contador');
-
-            function renderList(filtro = '') {
-                const filtrados = partidos.filter(p => p.toLowerCase().includes(filtro.toLowerCase()));
-                listado.innerHTML = '';
-                filtrados.forEach(nombre => {
-                    const card = document.createElement('div');
-                    card.style.cssText = "background:#fff; border-radius:8px; padding:10px 12px; box-shadow:0 1px 3px rgba(0,0,0,0.06); display:flex; justify-content:space-between; align-items:center;";
-                    card.innerHTML = `
-          <span style="font-weight:600;">${nombre}</span>
-          <a href="https://www.google.com/maps/search/${encodeURIComponent(nombre + ', Buenos Aires')}" target="_blank" 
-             style="font-size:0.9rem; color:#0b74de; text-decoration:none;">Mapa</a>
-        `;
-                    listado.appendChild(card);
-                });
-                contador.textContent = `Mostrando ${filtrados.length} de ${partidos.length} partidos.`;
-            }
-
-            buscador.addEventListener('input', e => renderList(e.target.value));
-            renderList();
-        </script>
-    </section>
-
-    <section id="contacto" class="py-5 bg-primary">
-        <div class="container">
-            <div class="content text-light">
-                <h3>Presupuestos gratis</h3>
+                
+                <div class="row g-3 text-center">
+                    <div class="col-4">
+                        <div class="p-3 border rounded-3 bg-light">
+                            <h3 class="fw-bold text-primary mb-0">2k+</h3>
+                            <small class="text-muted">Mudanzas</small>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="p-3 border rounded-3 bg-light">
+                            <h3 class="fw-bold text-primary mb-0">10</h3>
+                            <small class="text-muted">Provincias</small>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="p-3 border rounded-3 bg-light">
+                            <h3 class="fw-bold text-primary mb-0">100%</h3>
+                            <small class="text-muted">Seguro</small>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+</section>
+
+    <section class="py-5 bg-light">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="col-md-offset-0 bg-light border-round">
-                        <script src="https://js.hsforms.net/forms/embed/50609640.js" defer></script>
-                        <div class="hs-form-frame" data-region="na1" data-form-id="f86f7030-7c44-4fc0-affa-c38b7e424c72"
-                            data-portal-id="50609640"></div>
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Nuestros Servicios Profesionales</h2>
+                <p class="text-muted">Soluciones a medida para cada tipo de traslado</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 service-card">
+                        <div class="icon-box"><i class="bi bi-house-door-fill"></i></div>
+                        <h4>Mudanzas del Hogar</h4>
+                        <p class="text-muted">Cuidado extremo con tus muebles y objetos personales. Incluye carga y descarga.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 service-card">
+                        <div class="icon-box"><i class="bi bi-building"></i></div>
+                        <h4>Mudanzas de Oficinas</h4>
+                        <p class="text-muted">Traslado de equipos informáticos y mobiliario corporativo con rapidez y orden.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 service-card">
+                        <div class="icon-box"><i class="bi bi-box-seam"></i></div>
+                        <h4>Embalaje Especializado</h4>
+                        <p class="text-muted">Provisión de cajas, plástico burbuja y canastos reforzados para máxima protección.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/45990880.js"></script>
-    <a href="https://wa.link/ag0ukq" class="whatsapp" target="_blank" id="whatsapp_chat"> <i
-            class="fa-brands fa-whatsapp fa-2x whatsapp-icon"></i></a>
 
+    <section class="py-5">
+        <div class="container">
+            <h3 class="text-center fw-bold mb-5">Lo que dicen nuestros clientes en Google</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="google-review shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width:45px; height:45px">M</div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Mariela Fernández</h6>
+                                <div class="star-rating small"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                            </div>
+                        </div>
+                        <p class="small text-muted mb-0">"Excelente servicio de Capital a Córdoba. Llegaron a tiempo y nada se rompió. Súper recomendables!"</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="google-review shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width:45px; height:45px">J</div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Jorge Rossi</h6>
+                                <div class="star-rating small"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                            </div>
+                        </div>
+                        <p class="small text-muted mb-0">"Mudé mi oficina completa en un fin de semana. Muy profesionales y organizados con el etiquetado."</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="google-review shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center me-3" style="width:45px; height:45px">L</div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Lucía Gómez</h6>
+                                <div class="star-rating small"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                            </div>
+                        </div>
+                        <p class="small text-muted mb-0">"Me salvaron con una mudanza de último momento. Personal muy amable y respetuoso. El precio fue justo."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faqs" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Dudas Frecuentes</h2>
+            <p class="text-muted">Todo lo que necesitas saber antes de tu traslado</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion shadow-sm" id="accordionMudanzas">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                ¿Qué sucede si llueve el día de la mudanza?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionMudanzas">
+                            <div class="accordion-body">
+                                Contamos con camiones totalmente cerrados e impermeables. Sin embargo, si la intensidad de la lluvia pone en riesgo la integridad de tus muebles durante la carga/descarga, podemos reprogramar sin costo adicional.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                ¿Proveen cajas y material de embalaje?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionMudanzas">
+                            <div class="accordion-body">
+                                Sí, ofrecemos un kit de embalaje que incluye cajas de cartón reforzado, cinta de embalar y plástico burbuja. También podemos realizar nosotros el embalaje completo de tus pertenencias.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                ¿Tienen seguro de carga?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionMudanzas">
+                            <div class="accordion-body">
+                                Todas nuestras mudanzas cuentan con un seguro básico de transporte. Para objetos de gran valor o traslados de larga distancia, ofrecemos pólizas personalizadas con compañías líderes del mercado argentino.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                ¿Realizan movimientos por soga o balcón?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionMudanzas">
+                            <div class="accordion-body">
+                                Contamos con personal capacitado y arneses profesionales para movimientos de muebles por altura cuando no entran por ascensor o escalera. Consúltanos por disponibilidad de este servicio.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 border-bottom">
+    <div class="container text-center">
+        <div class="row g-4">
+            <div class="col-md-3">
+                <i class="bi bi-chat-left-dots fs-1 text-primary"></i>
+                <h5 class="mt-3">1. Consulta</h5>
+                <p class="small">Cotizamos tu mudanza vía WhatsApp o Formulario.</p>
+            </div>
+            <div class="col-md-3">
+                <i class="bi bi-calendar-check fs-1 text-primary"></i>
+                <h5 class="mt-3">2. Reserva</h5>
+                <p class="small">Agendamos el día y la hora que mejor te convenga.</p>
+            </div>
+            <div class="col-md-3">
+                <i class="bi bi-box-seam fs-1 text-primary"></i>
+                <h5 class="mt-3">3. Traslado</h5>
+                <p class="small">Embalamos y transportamos todo con máximo cuidado.</p>
+            </div>
+            <div class="col-md-3">
+                <i class="bi bi-house-check fs-1 text-primary"></i>
+                <h5 class="mt-3">4. ¡Nueva Casa!</h5>
+                <p class="small">Descargamos y ubicamos los muebles en su lugar.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <section id="cotizar" class="py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center mb-4">
+                <h2 class="fw-bold text-warning">Pedí tu Presupuesto Gratis</h2>
+                <p>Completá los datos y recibí una cotización formal en tu correo y WhatsApp.</p>
+            </div>
+            <div class="col-lg-7">
+                <div class="card p-4 text-dark shadow-lg">
+                    <form action="https://formspree.io/f/TU_ID_AQUI" method="POST">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold small">Nombre y Apellido</label>
+                                <input type="text" name="nombre" class="form-control" placeholder="Ej: Juan Pérez" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold small">WhatsApp (con código de área)</label>
+                                <input type="tel" name="whatsapp" class="form-control" placeholder="Ej: 11 1234 5678" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold small">Origen (Barrio/Ciudad)</label>
+                                <input type="text" name="origen" class="form-control" placeholder="Desde dónde mudás" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold small">Destino (Barrio/Ciudad)</label>
+                                <input type="text" name="destino" class="form-control" placeholder="Hacia dónde vas" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label fw-bold small">¿Qué vas a trasladar?</label>
+                                <select name="tipo_vivienda" class="form-select">
+                                    <option value="Casa">Casa</option>
+                                    <option value="Depto_Ascensor">Departamento (con ascensor)</option>
+                                    <option value="Depto_Escalera">Departamento (por escalera)</option>
+                                    <option value="Oficina">Oficina / Local</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label fw-bold small">Mensaje o Inventario (Opcional)</label>
+                                <textarea name="mensaje" class="form-control" rows="3" placeholder="Ej: Heladera, sillón, 10 cajas..."></textarea>
+                            </div>
+                            <input type="text" name="_gotcha" style="display:none">
+                            
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-warning w-100 fw-bold py-3 shadow">
+                                    ENVIAR SOLICITUD POR CORREO
+                                </button>
+                            </div>
+
+                            <p class="text-muted mt-3" style="font-size: 0.75rem;">
+    * Al enviar este formulario, aceptás que <strong>Mudanzas ARG</strong> trate tus datos únicamente para enviarte el presupuesto solicitado. No compartimos tu información con terceros. Conforme a la Ley 25.326.
+</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer class="py-4 text-center bg-dark text-white border-top border-secondary">
+        <div class="container">
+            <div class="mb-3">
+                <a href="#" class="text-white me-3 fs-4"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-white me-3 fs-4"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-white fs-4"><i class="bi bi-whatsapp"></i></a>
+                <a href="#" class="text-white-50 small text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalPrivacidad">Política de Privacidad</a>
+            </div>
+            <p class="small mb-0">© 2026 Mudanzas Express Argentina. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <a href="https://wa.me/54911XXXXXXXX?text=Hola!%20Quisiera%20consultar%20por%20una%20mudanza." 
+   class="whatsapp-float" 
+   target="_blank" 
+   rel="noopener noreferrer">
+    <i class="bi bi-whatsapp"></i>
+</a>
+<script>
+    window.addEventListener('scroll', function () {
+        const nav = document.getElementById('mainNavbar');
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+</script>
+<div class="modal fade" id="modalPrivacidad" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog text-dark">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold">Política de Privacidad - Mudanzas ARG</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body small">
+        <p>En cumplimiento con la <strong>Ley 25.326 de Protección de Datos Personales</strong> en Argentina, te informamos:</p>
+        <ul>
+            <li><strong>Finalidad:</strong> Los datos recolectados (Nombre, WhatsApp, Direcciones) se utilizan exclusivamente para elaborar el presupuesto de mudanza solicitado.</li>
+            <li><strong>Confidencialidad:</strong> Tus datos no serán cedidos, vendidos ni compartidos con ninguna otra empresa o base de datos publicitaria.</li>
+            <li><strong>Derechos:</strong> Podés solicitar el acceso, rectificación o supresión de tus datos enviando un correo a info@mudanzasarg.com.ar.</li>
+            <li><strong>Seguridad:</strong> Implementamos medidas técnicas para proteger tu información contra accesos no autorizados.</li>
+        </ul>
+        <p class="mb-0 text-muted italic">Responsable: Mudanzas ARG - Maipú, Mendoza, Argentina.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100">
+  
+  <div id="toastExito" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        <i class="bi bi-check-circle-fill me-2"></i> ¡Solicitud enviada! Nos contactaremos a la brevedad.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <div id="toastPromo" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="10000">
+    <div class="toast-header bg-warning text-dark">
+      <i class="bi bi-megaphone-fill me-2"></i>
+      <strong class="me-auto">Promoción del Mes</strong>
+      <small>Ahora</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      🎁 10% OFF en kit de embalaje si reservás tu mudanza esta semana.
+    </div>
+  </div>
+
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // 1. Mostrar Toast de Promo automáticamente a los 3 segundos
+    const toastPromoEl = document.getElementById('toastPromo');
+    const toastPromo = new bootstrap.Toast(toastPromoEl);
+    setTimeout(() => {
+        toastPromo.show();
+    }, 3000);
+
+    // 2. Simulación de Envío de Formulario
+    const formulario = document.querySelector('form');
+    if(formulario) {
+        formulario.addEventListener('submit', function(e) {
+            // Si usas Formspree, esto se puede disparar tras el éxito
+            // Por ahora, mostramos cómo se vería el aviso de éxito:
+            const toastExitoEl = document.getElementById('toastExito');
+            const toastExito = new bootstrap.Toast(toastExitoEl);
+            toastExito.show();
+        });
+    }
+});
+</script>
 </body>
-
 </html>
