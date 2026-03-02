@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Security-Policy" content="
     default-src 'self'; 
-    script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://www.googletagmanager.com https://cdn.jsdelivr.net; 
+    script-src 'self' 'unsafe-inline' https://maps.gstatic.com https://maps.googleapis.com https://www.googletagmanager.com https://cdn.jsdelivr.net; 
     style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; 
     img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com https://cdn-icons-png.flaticon.com https://popnegro.github.io; 
     font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com; 
@@ -80,12 +80,7 @@
     "@type": "City",
     "name": "Mendoza"
   },
-  "serviceType": "Taxi y Remis",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "148"
-  }
+  "serviceType": "Taxi y Remis",  
 }
 </script>
 </head>
@@ -136,20 +131,30 @@
             <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
                 <div class="card main-card">
                     <div class="mb-2 px-0">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="d-flex justify-content-between align-items-center mb-2 px-1">
                             <small class="fw-bold text-muted">
                                 <i class="bi bi-geo-alt-fill text-danger pulse"></i>
                                 <span id="ubicacion-status">Detectando ubicación...</span>
-                                <span id="timer-container" class="ms-2 d-none">
-                                    (<span id="timer-count">0.0</span>s)
-                                </span>
+                                <span id="timer-container" class="ms-1 d-none">(<span
+                                        id="timer-count">0.0</span>s)</span>
                             </small>
                             <button onclick="obtenerUbicacion()" class="btn btn-sm btn-outline-primary border-0">
-                                <i class="bi bi-arrow-clockwise"></i> GPS
+                                <i class="bi bi-arrow-clockwise"></i> Reintentar
                             </button>
                         </div>
+
+                        <div id="manual-address-container" class="mb-3 d-none">
+                            <div class="alert alert-warning py-2 mb-2 d-flex align-items-center"
+                                style="font-size: 0.85rem;">
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                GPS no disponible. Escribí tu dirección abajo:
+                            </div>
+                            <input type="text" id="manual-address" class="form-control border-warning shadow-sm"
+                                placeholder="Ej: Calle San Martín 123, Maipú" oninput="actualizarDireccionManual()">
+                        </div>
+
                         <div id="map" style="height: 175px; width: 100%; border-radius: 12px; border: 1px solid #eee;"
-                            class="shadow-sm"></div>
+                            class="shadow-sm mb-3"></div>
                     </div>
 
                     <div class="d-grid gap-2">
@@ -232,8 +237,10 @@
         <div class="container">
             <div class="col-md-4 text-center text-md-end">
                 <h6 class="mb-3 text-uppercase fw-bold">Síguenos</h6>
-                <div class="d-flex justify-content-center justify-content-md-end gap-3"><a href="#" class="social-icon bi bi-facebook" aria-label="Seguinos en Facebook"></a><a href="https://instagram.com/mastaxis" target="_blank"
-                        rel="noopener noreferrer" class="social-icon bi bi-instagram fs-4 text-white shadow-sm"
+                <div class="d-flex justify-content-center justify-content-md-end gap-3"><a href="#"
+                        class="social-icon bi bi-facebook" aria-label="Seguinos en Facebook"></a><a
+                        href="https://instagram.com/mastaxis" target="_blank" rel="noopener noreferrer"
+                        class="social-icon bi bi-instagram fs-4 text-white shadow-sm"
                         aria-label="Instagram de Más Taxis"></a><a href="https://x.com/mastaxis" target="_blank"
                         rel="noopener noreferrer" class="social-icon bi bi-twitter-x fs-4 text-white shadow-sm"
                         aria-label="Twitter X de Más Taxis"></a></div>
@@ -317,63 +324,84 @@
             if (el) el.innerText = diff.toFixed(1);
         }
 
+        function actualizarDireccionManual() {
+            userAddress = document.getElementById('manual-address').value;
+            // Si es manual, el link de mapa será genérico de búsqueda por texto
+            userLatLng = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(userAddress)}`;
+        }
+
         function obtenerUbicacion() {
+            const statusText = document.getElementById('ubicacion-status');
+            const manualContainer = document.getElementById('manual-address-container');
             const mapElement = document.getElementById('map');
-            mapElement.classList.add('loading');
+
+            // Reset visual
+            manualContainer.classList.add('d-none');
+            mapElement.style.display = "block";
+            statusText.innerText = "Localizando...";
 
             clearInterval(timerInterval);
             startTime = Date.now();
             document.getElementById('timer-container').classList.remove('d-none');
-            document.getElementById('ubicacion-status').innerText = "Localizando...";
             timerInterval = setInterval(actualizarCronometro, 100);
 
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition((position) => {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
                     clearInterval(timerInterval);
                     const pos = { lat: position.coords.latitude, lng: position.coords.longitude };
-
-                    // CORRECCIÓN: URL válida para WhatsApp
                     userLatLng = `https://www.google.com/maps?q=${pos.lat},${pos.lng}`;
 
                     marker.setPosition(pos);
                     map.setCenter(pos);
-                    mapElement.classList.remove('loading');
 
                     geocoder.geocode({ location: pos }, (results, status) => {
                         if (status === "OK" && results[0]) {
                             userAddress = results[0].formatted_address;
-                            document.getElementById('ubicacion-status').innerText = "Ubicación confirmada";
-
-                            // Sonido de éxito solo al confirmar
-                            new Audio('https://assets.mixkit.co/active_storage/sfx/719/719-preview.mp3').play();
+                            statusText.innerHTML = 'Ubicación Lista';
                         }
                     });
-                }, () => {
+                },
+                (error) => {
+                    // SI FALLA EL GPS
                     clearInterval(timerInterval);
-                    document.getElementById('ubicacion-status').innerText = "Error GPS. Activa tu ubicación.";
-                }, { enableHighAccuracy: true, timeout: 10000 });
-            }
+                    document.getElementById('timer-container').classList.add('d-none');
+                    statusText.innerText = "GPS no detectado";
+
+                    // Mostrar carga manual y ocultar mapa para limpiar la pantalla
+                    manualContainer.classList.remove('d-none');
+                    mapElement.style.display = "none";
+                    document.getElementById('manual-address').focus();
+                },
+                { enableHighAccuracy: true, timeout: 8000 }
+            );
         }
 
+        // Modificación en validarYEnviar para contemplar ambos casos
         function validarYEnviar(e) {
-            e.preventDefault(); // Prevenir el salto del enlace
-            const nameInput = document.getElementById('user-name').value.trim();
+            const nombre = document.getElementById('user-name').value.trim();
+            const direccionIngresada = document.getElementById('manual-address').value.trim();
 
-            if (nameInput === "") {
-                alert("Por favor, ingresa tu nombre para pedir el taxi");
-                document.getElementById('user-name').focus();
+            // Si el contenedor manual está visible, validamos esa dirección
+            if (!document.getElementById('manual-address-container').classList.contains('d-none')) {
+                if (!direccionIngresada) {
+                    alert("Por favor, escribí tu dirección.");
+                    return;
+                }
+                userAddress = direccionIngresada;
+                userLatLng = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(userAddress)}`;
+            }
+
+            if (!nombre) {
+                alert("Ingresá tu nombre para el chofer.");
                 return;
             }
 
-            const textoBase = `🚕 *NUEVO PEDIDO DE TAXI*\n\n👤 *Pasajero:* ${nameInput}\n📍 *Ubicación:* ${userAddress}\n🗺️ *Mapa:* ${userLatLng}`;
-            const urlFinal = `https://wa.me/${miTelefono}?text=${encodeURIComponent(textoBase)}`;
+            const texto = `🚕 *NUEVO PEDIDO*\n👤 *Pasajero:* ${nombre}\n📍 *Dirección:* ${userAddress}\n🗺️ *Mapa:* ${userLatLng}`;
+            window.open(`https://wa.me/${miTelefono}?text=${encodeURIComponent(texto)}`, '_blank');
 
-            // Abrir WhatsApp
-            window.open(urlFinal, '_blank');
-
-            // Mostrar Modal de éxito
-            const modalExito = new bootstrap.Modal(document.getElementById('modalExito'));
-            modalExito.show();
+            setTimeout(() => {
+                new bootstrap.Modal(document.getElementById('modalExito')).show();
+            }, 1000);
         }
     </script>
 
@@ -386,7 +414,7 @@
     </script>
 
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuFEjycWBUxeJ32jWckekiIutLgcul21Q&callback=initMap"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuFEjycWBUxeJ32jWckekiIutLgcul21Q&callback=initMap"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
