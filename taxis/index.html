@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taxi Seguro | Tu Unidad en Camino</title>
+    <title>Taxi Express | Tu Unidad en Camino</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="theme.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RNGWR660DF"></script>
     <script>
@@ -24,30 +27,31 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="https://cdn-icons-png.flaticon.com/512/3448/3448636.png" alt="Logo Taxi" class="me-2">
-                <span class="fw-bold text-uppercase" style="letter-spacing: 1px;">Taxi<span
-                        class="text-warning">Express</span></span>
+                <span class="fw-bold text-uppercase" style="letter-spacing: 1.5px;">TAXI<span
+                        class="text-warning">+</span></span>
             </a>
-            <a href="tel:+5492613871088" class="btn btn-warning btn-sm fw-bold">LLAMAR YA</a>
         </div>
     </nav>
-
     <header id="taxiCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
+                <img src="taxi-gps.webp" class="d-block w-100" alt="Taxi 2">
+                <div class="carousel-caption">
+                    <h2 class="fw-medium">Tu taxi sin estrés</h2>
+                </div>
+            </div>
+            <div class="carousel-item">
                 <img src="taxi-puerta.webp" class="d-block w-100" alt="Taxi 1">
                 <div class="carousel-caption">
-                    <h2 class="fw-bold">Tu Taxi en 15 Minutos</h2>
-                    <p class="fw-medium fs-6">Servicio rápido y confiable</p>
+                    <h2 class="fw-medium">Viajá como quieras</h2>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="taxi-gps.webp" class="d-block w-100" alt="Taxi 2">
                 <div class="carousel-caption">
-                    <h2 class="fw-bold">Viajá tranquilo</h2>
-                    <p class="fw-medium fs-6">Vehículos monitoreados</p>
+                    <h2 class="fw-medium">Llegá a tu destino</h2>
                 </div>
-            </div>
-
+            </div>            
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#taxiCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -61,15 +65,13 @@
 
     <main class="container mb-5">
         <div class="row justify-content-center">
-            <div class="col-md-7 col-lg-5">
-
+            <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
                 <div class="card main-card">
-
-                    <div class="mb-2 px-2">
+                    <div class="mb-2 px-0">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <small class="fw-bold text-muted">
                                 <i class="bi bi-geo-alt-fill text-danger pulse"></i>
-                                <span id="ubicacion-status">Detectando tu ubicación...</span>
+                                <span id="ubicacion-status">Detectando ubicación...</span>
                                 <span id="timer-container" class="ms-2 d-none">
                                     (<span id="timer-count">0.0</span>s)
                                 </span>
@@ -77,29 +79,25 @@
                             <button onclick="obtenerUbicacion()" class="btn btn-sm btn-outline-primary border-0">
                                 <i class="bi bi-arrow-clockwise"></i> Actualizar
                             </button>
-
                         </div>
-
-                        <div id="map" style="height: 165px; width: 100%; border-radius: 12px; border: 2px solid #eee;"
+                        <div id="map" style="height: 155px; width: 100%; border-radius: 12px; border: 1px solid #eee;"
                             class="shadow-sm"></div>
                     </div>
-
-                    <div class="mb-3 px-2">
-                        <label for="user-name" class="form-label small fw-bold text-muted">
-                            <i class="bi bi-person-fill text-primary"></i> Tu Nombre para el Chofer
+                    
+                    <div class="d-grid gap-2">
+                        <div class="mb-2">
+                        <label for="user-name" class="form-label fw-medium text-muted">
+                            Hola, dejanos tu nombre para el chofer
                         </label>
                         <input type="text" id="user-name" class="form-control form-control-lg border-0 shadow-sm"
                             placeholder="Ej: Juan Pérez" aria-label="Nombre">
                     </div>
-
-                    <div class="d-grid gap-3">
                         <a href="#" id="btn-ws-dinamico" onclick="validarYEnviar(event)"
                             class="btn btn-whatsapp text-uppercase py-3 fw-bold pulse">
                             <i class="bi bi-whatsapp me-2"></i> Pedir por WhatsApp
                         </a>
                     </div>
-
-                    <div class="row mt-4 g-2 text-center small text-secondary">
+                    <div class="row mt-3 g-2 text-center small text-secondary">
                         <div class="col-4 border-end">
                             <i class="bi bi-clock-fill text-primary d-block fs-4 mb-1"></i> 15 min
                         </div>
@@ -166,7 +164,7 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-4 text-center text-md-start">
-                    <h6 class="mb-3">TAXI EXPRESS</h6>
+                    <h6 class="mb-3">www.mastaxis.com.ar</h6>
                     <p class="small mb-2">Tu servicio de confianza en Mendoza. Rapidez, seguridad y
                         confort en cada viaje, las 24 horas.</p>
                     <p class="small fw-bold var(--taxi-yellow)">Llámanos: <a href="tel:+123456789" class="text-white">+1
@@ -194,8 +192,8 @@
 
             <div class="row footer-bottom text-center">
                 <div class="col-12">
-                    <p class="small mb-0">© 2026 Central Taxi Express. <br>
-                        Diseñado para carga rápida en móviles.</p>
+                    <p class="small mb-0">© 2026 Más Taxis Mendoza <br>
+                        Diseño mobile para prueba comercial</p>
                 </div>
             </div>
         </div>
