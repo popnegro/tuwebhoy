@@ -84,8 +84,17 @@
                             class="shadow-sm"></div>
                     </div>
 
+                    <div class="mb-3 px-2">
+                        <label for="user-name" class="form-label small fw-bold text-muted">
+                            <i class="bi bi-person-fill text-primary"></i> Tu Nombre para el Chofer
+                        </label>
+                        <input type="text" id="user-name" class="form-control form-control-lg border-0 shadow-sm"
+                            placeholder="Ej: Juan Pérez" aria-label="Nombre">
+                    </div>
+
                     <div class="d-grid gap-3">
-                        <a href="#" id="btn-ws-dinamico" class="btn btn-whatsapp text-uppercase py-3 fw-bold pulse">
+                        <a href="#" id="btn-ws-dinamico" onclick="validarYEnviar(event)"
+                            class="btn btn-whatsapp text-uppercase py-3 fw-bold pulse">
                             <i class="bi bi-whatsapp me-2"></i> Pedir por WhatsApp
                         </a>
                     </div>
@@ -289,10 +298,33 @@
             }
         }
 
+        // Variable para el nombre
+        let userName = "";
+
         function actualizarEnlaceWhatsApp() {
-            const textoBase = `🚕 *SOLICITUD DE TAXI*\n\n📍 *Ubicación:* ${userAddress}\n\n🗺️ *Mapa:* ${userLatLng}`;
+            const nameInput = document.getElementById('user-name').value.trim();
+            userName = nameInput ? nameInput : "Pasajero"; // Default si está vacío
+
+            // Formateo del mensaje con el nombre incluido
+            const textoBase = `🚕 *NUEVO PEDIDO DE TAXI*\n\n👤 *Pasajero:* ${userName}\n📍 *Ubicación:* ${userAddress}\n🗺️ *Mapa:* ${userLatLng}`;
+
             const urlFinal = `https://wa.me/${miTelefono}?text=${encodeURIComponent(textoBase)}`;
             document.getElementById('btn-ws-dinamico').href = urlFinal;
+        }
+
+        // Función para validar que no envíen el formulario vacío
+        function validarYEnviar(e) {
+            const nameInput = document.getElementById('user-name').value.trim();
+
+            if (nameInput === "") {
+                e.preventDefault(); // Detiene el envío
+                alert("Por favor, ingresa tu nombre para que el chofer pueda identificarte.");
+                document.getElementById('user-name').focus();
+                return false;
+            }
+
+            // Si hay nombre, actualizamos el link justo antes de salir
+            actualizarEnlaceWhatsApp();
         }
 
         // Asegurarse de que el número de teléfono sea consistente en todos los botones
