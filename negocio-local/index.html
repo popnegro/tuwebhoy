@@ -13,7 +13,7 @@
     <style>
         :root {
             --primary: #0061FF;
-            --accent: #ff3e3e;
+            --accent: red;
             --dark: #0f1115;
             --card-bg: #ffffff;
         }
@@ -43,6 +43,10 @@
             color: white;
             padding: 100px 0 80px;
             clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        .section {
+            width: 80vh;
         }
 
         /* 3. BENEFICIOS */
@@ -114,6 +118,29 @@
         box-shadow: none;
         border-color: rgba(0,0,0,.125);
     }
+        .fw-black { font-weight: 900; }
+    .bg-primary-subtle { background-color: rgba(0, 97, 255, 0.08) !important; }
+    .x-small { font-size: 0.75rem; }
+    .card { transition: transform 0.3s ease; }
+    .card:hover { transform: translateY(-8px); }
+
+    /* 4. NOTIFICACIÓN DE CUPOS (SOCIAL PROOF) */
+        #cupos-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: white;
+            color: black;
+            padding: 15px 25px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 2000;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: none;
+        }
 
     </style>
 </head>
@@ -127,21 +154,21 @@
     </div>
 
     
-    <header class="hero-section text-center">
+    <header class="hero-section text-center mb-5">
         <div class="container">
             <span class="badge bg-white text-primary px-3 py-2 rounded-pill fw-bold mb-3 animate__animated animate__fadeInDown">SOLO 2 CUPOS DISPONIBLES</span>
             <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInUp">Tu Web Profesional <br>Lista en <span class="text-info">48 Horas.</span></h1>
-            <p class="lead mb-5 opacity-75 animate__animated animate__fadeInUp">No pierdas más ventas por no tener presencia online. <br>Llevá tu local de Maipú a todo Mendoza con tecnología de alta conversión.</p>
-              <div class="d-flex gap-3">
-                    <a href="#contacto" class="btn btn-light btn-lg px-4 fw-bold py-3">EMPEZAR AHORA</a>
-                    <a href="#demo" class="btn btn-outline-light btn-lg px-4 py-3">VER DEMO EN VIVO</a>
-                </div>
-        
-        </div>
-      
+            <p class="lead mb-5 opacity-75 animate__animated animate__fadeInUp">No pierdas más ventas por no tener presencia online. <br>        Inversión única. Sin costos mensuales ocultos.</p>
+            </p>
+            <a href="#contacto" class="btn btn-light btn-md px-4 fw-bold py-3">CONOCER PLANES</a>
     </header>
 
-    <section class="container py-5 mt-n5">
+  
+    <section id="beneficios" class="container py-5 my-5">
+    <div class="text-center mb-5 animate__animated animate__fadeInUp">
+        <h2 class="fw-bold">Tu negocio, <span class="text-primary">potenciado al máximo</span></h2>
+        <p class="text-muted lead">No hacemos solo webs, creamos herramientas de rentabilidad.</p>
+    </div>
         <div class="row g-4">
             <div class="col-md-4 animate__animated animate__fadeInLeft">
                 <div class="card benefit-card p-4 shadow-sm h-100">
@@ -150,14 +177,14 @@
                     <p class="text-muted small mb-0">Optimizamos tu sitio para que vuele en móviles 4G/5G, reduciendo el abandono de clientes.</p>
                 </div>
             </div>
-            <div class="col-md-4 animate__animated animate__fadeInUp">
+            <div class="col-md-4 animate__animated animate__fadeInLeft">
                 <div class="card benefit-card p-4 shadow-sm h-100">
                     <i class="bi bi-whatsapp text-success fs-1 mb-3"></i>
                     <h5 class="fw-bold">Directo al WhatsApp</h5>
                     <p class="text-muted small mb-0">Convertimos cada visita en un mensaje directo a tu celular para que cierres la venta.</p>
                 </div>
             </div>
-            <div class="col-md-4 animate__animated animate__fadeInRight">
+            <div class="col-md-4 animate__animated animate__fadeInLeft">
                 <div class="card benefit-card p-4 shadow-sm h-100">
                     <i class="bi bi-shield-check text-info fs-1 mb-3"></i>
                     <h5 class="fw-bold">Gestión Autónoma</h5>
@@ -167,47 +194,48 @@
             <div class="col-md-4 animate__animated animate__fadeInLeft">
                 <div class="card benefit-card p-4 shadow-sm h-100">
                     <i class="bi bi-lightning-charge-fill text-primary fs-1 mb-3"></i>
-                    <h5 class="fw-bold">Velocidad de Carga</h5>
+                    <h5 class="fw-bold">Hosting</h5>
                     <p class="text-muted small mb-0">Optimizamos tu sitio para que vuele en móviles 4G/5G, reduciendo el abandono de clientes.</p>
                 </div>
             </div>
-            <div class="col-md-4 animate__animated animate__fadeInUp">
+            <div class="col-md-4 animate__animated animate__fadeInLeft">
                 <div class="card benefit-card p-4 shadow-sm h-100">
                     <i class="bi bi-whatsapp text-success fs-1 mb-3"></i>
-                    <h5 class="fw-bold">Directo al WhatsApp</h5>
+                    <h5 class="fw-bold">Registro de dominio</h5>
                     <p class="text-muted small mb-0">Convertimos cada visita en un mensaje directo a tu celular para que cierres la venta.</p>
                 </div>
             </div>
-            <div class="col-md-4 animate__animated animate__fadeInRight">
+            <div class="col-md-4 animate__animated animate__fadeInLeft">
                 <div class="card benefit-card p-4 shadow-sm h-100">
                     <i class="bi bi-shield-check text-info fs-1 mb-3"></i>
-                    <h5 class="fw-bold">Gestión Autónoma</h5>
+                    <h5 class="fw-bold">Certificado de seguridad</h5>
                     <p class="text-muted small mb-0">Olvidate de pagar mantenimiento. Podés subir productos y cambiar precios vos mismo con un Excel.</p>
                 </div>
             </div>
         </div>
-
- 
     </section>
 
-    <section class="container py-5" id="planes">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold h1">Planes con Descuento Flash</h2>
-            <p class="text-muted">Inversión única. Sin costos mensuales ocultos.</p>
+    <section class="container py-5 my-5" id="planes">
+        <div class="text-center mb-5 animate__animated animate__fadeInUp">
+            <h2 class="fw-bold">Planes <span class="text-primary">con Descuento Flash</span></h2>
+            <p class="text-muted lead">Promoción por 24 hs, pocos cupos disponibles.</p>
         </div>
         <div class="row g-4 justify-content-center align-items-center">
-            <div class="col-md-5 col-lg-4">
+            <div class="col-md-6 col-lg-4">
                 <div class="card pricing-card p-4 shadow-sm">
                     <div class="card-body text-center">
                         <h4 class="fw-bold text-muted">Essential</h4>
                         <div class="my-4">
                             <span class="display-5 fw-bold">$180.000</span>
-                            <p class="text-muted small">Único pago</p>
+                            <p class="text-muted small">Pago 100% para inicio de proyecto</p>
                         </div>
-                        <ul class="list-unstyled text-start mb-5">
-                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Landing Institucional</li>
+                        <ul class="list-unstyled text-start mt-5">
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Landing Institucional 5 secciones</li>
                             <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Botón WhatsApp</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Formulario integrado con WhatsApp</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Carrousel de Marcas</li>
                             <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Optimización SEO Local</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Mantenimiento bajo</li>
                         </ul>
                         <button onclick="order('Essential')" class="btn btn-outline-primary w-100 py-3 fw-bold">SOLICITAR AHORA</button>
                     </div>
@@ -220,12 +248,19 @@
                         <h4 class="fw-bold">Pro Full Admin</h4>
                         <div class="my-4">
                             <span class="display-5 fw-bold text-primary">$350.000</span>
-                            <p class="text-muted small">Valor real: <del>$450.000</del></p>
+                            <p class="text-muted small">Adelanto 50% / 50% Finalización</p>
                         </div>
-                        <ul class="list-unstyled text-start mb-5">
-                            <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i><b>Catálogo CSV (Excel)</b></li>
-                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Tracking de Pedidos</li>
-                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Panel Administrable</li>
+                        <ul class="list-unstyled text-start">
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Landing Institucional 5 secciones</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Botón WhatsApp</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Formulario integrado con WhatsApp</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Carrousel de Marcas</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Optimización SEO Local</li>                            
+                            <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Catálogo CSV (Excel)</li>
+                            <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Sistema de ofertas y filtros</li>
+                            <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Tracking de Pedidos</li>
+                            <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Panel Administrable</li>
+                            <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Mantenimiento autónomo</li>
                         </ul>
                         <button onclick="order('Pro Full')" class="btn btn-primary w-100 py-3 fw-bold shadow">RESERVAR MI CUPO</button>
                     </div>
@@ -233,75 +268,6 @@
             </div>
         </div>
     </section>
-
-    <div id="social-proof" class="animate__animated">
-        <i class="bi bi-bag-check-fill text-success fs-4"></i>
-        <div>
-            <div class="fw-bold small" id="buyer-name">Pedro de Maipú</div>
-            <div class="text-muted small">Acaba de digitalizar su local</div>
-        </div>
-    </div>
-
-    
-    <section id="beneficios" class="container py-5">
-    <div class="text-center mb-5 animate__animated animate__fadeIn">
-        <h2 class="fw-bold h1">Tu negocio, <span class="text-primary">potenciado al máximo</span></h2>
-        <p class="text-muted lead">No hacemos solo webs, creamos herramientas de rentabilidad.</p>
-    </div>
-
-</section>
-
-<section id="faq" class="container py-5 my-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <h2 class="text-center fw-bold mb-5">Preguntas <span class="text-primary">Frecuentes</span></h2>
-            <div class="accordion accordion-flush shadow-sm rounded-4 overflow-hidden" id="accordionFAQ">
-                
-                <div class="accordion-item border-bottom">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button fw-bold py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                            ¿Necesito conocimientos técnicos para usar el sistema CSV?
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFAQ">
-                        <div class="accordion-body text-muted">
-                            Para nada. Si sabés usar Excel o Google Sheets, podés usar nuestro sistema. Solo completás las columnas de nombre, precio y stock, cargás el archivo y la web se actualiza al instante.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item border-bottom">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed fw-bold py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                            ¿Qué pasa después de los 10 días de entrega?
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-                        <div class="accordion-body text-muted">
-                            Te brindamos una capacitación de 30 minutos para que aprendas a gestionar tu sitio. Además, tenés soporte técnico incluido por 30 días para cualquier duda que surja.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed fw-bold py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                            ¿Incluye el dominio y el hosting?
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-                        <div class="accordion-body text-muted">
-                            En el pago único del desarrollo bonificamos el primer año de hosting. Te asesoramos paso a paso para que el dominio (.com o .com.ar) quede a tu nombre para siempre.
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-
-
 
 
     <footer class="bg-dark text-white py-5 mt-5">
@@ -313,6 +279,11 @@
             <p class="mt-5 opacity-50 small">© 2026 Agencia Tech | Desarrollos de Alta Conversión | Mendoza, Argentina.</p>
         </div>
     </footer>
+
+     <div id="cupos-toast" class="animate__animated">
+        <i class="bi bi-fire text-danger"></i>
+        <span>Quedan solo <span class="text-danger">2 cupos</span> para hoy</span>
+    </div>
 
     <script>
         // 1. COUNTDOWN TIMER (24HS)
@@ -330,19 +301,12 @@
         }
         setInterval(updateTimer, 1000);
 
-        // 2. SOCIAL PROOF LOGIC
-        const buyers = ["Carlos de Ciudad", "Gabi de Luján", "Mati de Guaymallén", "Ana de Maipú"];
-        function showSocial() {
-            const el = document.getElementById('social-proof');
-            document.getElementById('buyer-name').innerText = buyers[Math.floor(Math.random()*buyers.length)];
-            el.style.display = 'flex';
-            el.classList.add('animate__fadeInLeft');
-            setTimeout(() => {
-                el.classList.replace('animate__fadeInLeft', 'animate__fadeOutLeft');
-                setTimeout(() => { el.style.display = 'none'; el.classList.remove('animate__fadeOutLeft'); }, 1000);
-            }, 4000);
-        }
-        setInterval(showSocial, 8000);
+        // 2. SOCIAL PROOF (POPUP DE CUPOS)
+        setTimeout(() => {
+            const toast = document.getElementById('cupos-toast');
+            toast.style.display = 'flex';
+            toast.classList.add('animate__fadeInLeft');
+        }, 5000);
 
         // 3. WHATSAPP LINK
         function order(plan) {
