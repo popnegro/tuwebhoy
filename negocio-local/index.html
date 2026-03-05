@@ -1,9 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    media-src 'self' https://assets.mixkit.co;
+    script-src 'self' 'unsafe-inline' https://maps.gstatic.com https://maps.googleapis.com https://www.googletagmanager.com https://cdn.jsdelivr.net https://*.googleapis.com; 
+    style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://cdnjs.cloudflare.com; 
+    img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com https://cdn-icons-png.flaticon.com https://popnegro.github.io; 
+    font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com; 
+    connect-src 'self' https://maps.gstatic.com https://maps.googleapis.com https://www.google-analytics.com https://region1.google-analytics.com https://cdn.jsdelivr.net;
+    frame-src 'self' https://www.google.com;">
+
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <meta http-equiv="Cache-Control" content="max-age=31536000">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oferta Flash 24hs | Digitalizá tu Negocio</title>
+    <title>Tu Web que vende, en 48 Horas | No pierdas más ventas por no tener presencia online</title>
+    <meta name="description"
+        content="">
+    <meta name="keywords"
+        content="taxi mendoza, pedir taxi maipu, remis mendoza, taxi aeropuerto mendoza, transporte mendoza gps, pedir taxi por whatsapp mendoza">
+    <meta name="author" content="TuWebHoy - Luis Grasso">
+    <meta name="robots" content="index, follow">
+    <meta name="geo.region" content="AR-M">
+    <meta name="geo.placename" content="Mendoza">
+    <meta name="geo.position" content="-32.9815;-68.7890">
+    <meta name="ICBM" content="-32.9815, -68.7890">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://popnegro.github.io/tuwebhoy/taxis/">
+    <meta property="og:title" content="Tu Web que vende, en 48 Horas | No pierdas más ventas por no tener presencia online">
+    <meta property="og:description"
+        content="">
+    <meta property="og:image" content="https://popnegro.github.io/tuwebhoy/taxis/preview-image.jpg">
+    <link rel="canonical" href="https://popnegro.github.io/tuwebhoy/taxis/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" media="print"
+        onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print"
+        onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+        media="print" onload="this.media='all'">
+    <meta name="theme-color" content="#ffc107">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="taxigo-icon.webp">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -41,7 +84,7 @@
         .hero-section {
             background: linear-gradient(135deg, #0061FF 0%, #003ba3 100%);
             color: white;
-            padding: 100px 0 80px;
+            padding: 80px 0 80px;
             clip-path: ellipse(150% 100% at 50% 0%);
         }
 
@@ -71,20 +114,9 @@
         }
         .pricing-card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
-        /* 5. FLOATING ELEMENTS */
-        #social-proof {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: white;
-            border-radius: 100px;
-            padding: 12px 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 1000;
-            display: none;
+        .bagde {
+            font-size: 1em !important;
+            font-weight: 700;
         }
 
         .btn-wa {
@@ -108,17 +140,7 @@
     .bg-success-subtle { background-color: rgba(37, 211, 102, 0.1); }
     .bg-info-subtle { background-color: rgba(13, 202, 240, 0.1); }
 
-    /* Estilos para el Accordion */
-    .accordion-button:not(.collapsed) {
-        background-color: #f0f5ff;
-        color: var(--primary);
-        box-shadow: none;
-    }
-    .accordion-button:focus {
-        box-shadow: none;
-        border-color: rgba(0,0,0,.125);
-    }
-        .fw-black { font-weight: 900; }
+    .fw-black { font-weight: 900; }
     .bg-primary-subtle { background-color: rgba(0, 97, 255, 0.08) !important; }
     .x-small { font-size: 0.75rem; }
     .card { transition: transform 0.3s ease; }
@@ -128,11 +150,11 @@
         #cupos-toast {
             position: fixed;
             bottom: 30px;
-            left: 30px;
+            left: 25px;
             background: white;
             color: black;
             padding: 15px 25px;
-            border-radius: 100px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -147,92 +169,91 @@
 <body>
 
     <div class="flash-bar text-center">
-        <div class="container d-flex justify-content-center align-items-center gap-3">
-            <span class="animate__animated animate__pulse animate__infinite">🔥 OFERTA EXCLUSIVA PARA NEGOCIOS LOCALES TERMINA EN:</span>
+        <div class="container d-flex justify-content-center align-items-center gap-3 px-2">
+            <span class="animate__animated animate__pulse animate__infinite">🔥 OFERTA x 24 HS</span>
             <div id="timer" class="badge bg-dark fs-6 font-monospace">00:00:00</div>
         </div>
     </div>
-
     
     <header class="hero-section text-center mb-5">
         <div class="container">
-            <span class="badge bg-white text-primary px-3 py-2 rounded-pill fw-bold mb-3 animate__animated animate__fadeInDown">SOLO 2 CUPOS DISPONIBLES</span>
-            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInUp">Tu Web Profesional <br>Lista en <span class="text-info">48 Horas.</span></h1>
-            <p class="lead mb-5 opacity-75 animate__animated animate__fadeInUp">No pierdas más ventas por no tener presencia online. <br>        Inversión única. Sin costos mensuales ocultos.</p>
-            </p>
-            <a href="#contacto" class="btn btn-light btn-md px-4 fw-bold py-3">CONOCER PLANES</a>
+            <span class="badge bg-white text-primary px-4 py-2 rounded fw-bold mb-3 animate__animated animate__fadeInDown">2 CUPOS DISPONIBLES</span>
+            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInUp">Tu Web que vende, <br> <span class="text-warning strong">en 48 Horas</span></h1>
+            <p class="lead mb-5 opacity-100 animate__animated animate__fadeInUp">No pierdas más ventas por no tener presencia online.</p>
+            </div>
+            <a href="#planes" class="btn btn-warning px-4 py-3 fw-bold shadow">CONTRATAR AHORA</a>
     </header>
 
   
-    <section id="beneficios" class="container py-5 my-5">
+    <section id="beneficios" class="container py-5 my-5 px-2 rounded">
     <div class="text-center mb-5 animate__animated animate__fadeInUp">
-        <h2 class="fw-bold">Tu negocio, <span class="text-primary">potenciado al máximo</span></h2>
-        <p class="text-muted lead">No hacemos solo webs, creamos herramientas de rentabilidad.</p>
+        <h2 class="fw-bold size-3">Tu negocio, <span class="text-primary">potenciado</span></h2>
+        <p class="text-muted lead">Creamos herramientas de rentabilidad</p>
     </div>
-        <div class="row g-4">
+        <div class="row g-4 px-2">
             <div class="col-md-4 animate__animated animate__fadeInLeft">
                 <div class="card benefit-card p-4 shadow-sm h-100">
                     <i class="bi bi-lightning-charge-fill text-primary fs-1 mb-3"></i>
                     <h5 class="fw-bold">Velocidad de Carga</h5>
-                    <p class="text-muted small mb-0">Optimizamos tu sitio para que vuele en móviles 4G/5G, reduciendo el abandono de clientes.</p>
+                    <p class="text-muted mb-0">Optimizamos tu sitio para que vuele en móviles 4G/5G, reduciendo el abandono de clientes.</p>
                 </div>
             </div>
             <div class="col-md-4 animate__animated animate__fadeInLeft">
                 <div class="card benefit-card p-4 shadow-sm h-100">
-                    <i class="bi bi-whatsapp text-success fs-1 mb-3"></i>
-                    <h5 class="fw-bold">Directo al WhatsApp</h5>
-                    <p class="text-muted small mb-0">Convertimos cada visita en un mensaje directo a tu celular para que cierres la venta.</p>
+                    <i class="bi bi-whatsapp text-primary fs-1 mb-3"></i>
+                    <h5 class="fw-bold">Directo a tu agente de WhatsApp</h5>
+                    <p class="text-muted mb-0">Convertimos cada visita en un mensaje directo a tu celular para que cierres la venta.</p>
                 </div>
             </div>
             <div class="col-md-4 animate__animated animate__fadeInLeft">
                 <div class="card benefit-card p-4 shadow-sm h-100">
-                    <i class="bi bi-shield-check text-info fs-1 mb-3"></i>
+                    <i class="bi bi-person-check-fill text-primary fs-1 mb-3"></i>
                     <h5 class="fw-bold">Gestión Autónoma</h5>
-                    <p class="text-muted small mb-0">Olvidate de pagar mantenimiento. Podés subir productos y cambiar precios vos mismo con un Excel.</p>
+                    <p class="text-muted mb-0">Olvidate de pagar mantenimiento. Podés subir productos y cambiar precios vos mismo con un Excel.</p>
                 </div>
             </div>
             <div class="col-md-4 animate__animated animate__fadeInLeft">
                 <div class="card benefit-card p-4 shadow-sm h-100">
                     <i class="bi bi-lightning-charge-fill text-primary fs-1 mb-3"></i>
                     <h5 class="fw-bold">Hosting</h5>
-                    <p class="text-muted small mb-0">Optimizamos tu sitio para que vuele en móviles 4G/5G, reduciendo el abandono de clientes.</p>
+                    <p class="text-muted mb-0">Con nuestros partners tecnológicos, tus páginas web serán rápidas en todos los dispositivos.</p>
                 </div>
             </div>
             <div class="col-md-4 animate__animated animate__fadeInLeft">
                 <div class="card benefit-card p-4 shadow-sm h-100">
-                    <i class="bi bi-whatsapp text-success fs-1 mb-3"></i>
+                    <i class="bi bi-patch-check-fill text-primary fs-1 mb-3"></i>
                     <h5 class="fw-bold">Registro de dominio</h5>
-                    <p class="text-muted small mb-0">Convertimos cada visita en un mensaje directo a tu celular para que cierres la venta.</p>
+                    <p class="text-muted mb-0">Evaluamos, registramos y delegamos tu dirección de sitio web de forma estratégica y amigable para los robots de búsqueda.</p>
                 </div>
             </div>
             <div class="col-md-4 animate__animated animate__fadeInLeft">
                 <div class="card benefit-card p-4 shadow-sm h-100">
-                    <i class="bi bi-shield-check text-info fs-1 mb-3"></i>
-                    <h5 class="fw-bold">Certificado de seguridad</h5>
-                    <p class="text-muted small mb-0">Olvidate de pagar mantenimiento. Podés subir productos y cambiar precios vos mismo con un Excel.</p>
+                    <i class="bi bi-shield-lock-fill text-primary fs-1 mb-3"></i>
+                    <h5 class="fw-bold">Cabeceras y certificados de seguridad</h5>
+                    <p class="text-muted mb-0">Configuramos las cabeceras de seguridad para proteger tu sitio web y mejorar tu posicionamiento en los motores de búsqueda.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="container py-5 my-5" id="planes">
+    <section class="container py-5 my-5 px-2" id="planes">
         <div class="text-center mb-5 animate__animated animate__fadeInUp">
-            <h2 class="fw-bold">Planes <span class="text-primary">con Descuento Flash</span></h2>
-            <p class="text-muted lead">Promoción por 24 hs, pocos cupos disponibles.</p>
+            <h2 class="fw-bold size-3">Planes <span class="text-primary">con Descuento</span></h2>
+            <p class="text-muted lead">Promo 24 hs, pocos cupos disponibles</p>
         </div>
-        <div class="row g-4 justify-content-center align-items-center">
-            <div class="col-md-6 col-lg-4">
-                <div class="card pricing-card p-4 shadow-sm">
+        <div class="row g-4 px-2 justify-content-center align-items-center">
+            <div class="col-md-5 col-lg-5">
+                <div class="card pricing-card p-2 shadow-sm">
                     <div class="card-body text-center">
-                        <h4 class="fw-bold text-muted">Essential</h4>
-                        <div class="my-4">
-                            <span class="display-5 fw-bold">$180.000</span>
-                            <p class="text-muted small">Pago 100% para inicio de proyecto</p>
+                        <h4 class="fw-medium">Essential</h4>
+                        <div class="my-3">
+                            <span class="display-5 text-primary fw-bold">$175.000</span>
+                            <p class="text-muted">Pago 100% anticipado</p>
                         </div>
-                        <ul class="list-unstyled text-start mt-5">
-                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Landing Institucional 5 secciones</li>
+                        <ul class="list-unstyled text-start mt-3">
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Landing 5 secciones</li>
                             <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Botón WhatsApp</li>
-                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Formulario integrado con WhatsApp</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Formulario directo a WhatsApp</li>
                             <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Carrousel de Marcas</li>
                             <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Optimización SEO Local</li>
                             <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Mantenimiento bajo</li>
@@ -241,28 +262,29 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5 col-lg-4">
-                <div class="card pricing-card featured p-4 shadow-lg">
+            <div class="col-md-5 col-lg-5">
+                <div class="card pricing-card bg-dark text-white p-2 shadow-lg">
                     <div class="card-body text-center">
-                        <span class="badge bg-primary px-3 py-2 rounded-pill mb-3">EL MÁS VENDIDO</span>
-                        <h4 class="fw-bold">Pro Full Admin</h4>
-                        <div class="my-4">
-                            <span class="display-5 fw-bold text-primary">$350.000</span>
-                            <p class="text-muted small">Adelanto 50% / 50% Finalización</p>
+                        <span class="badge bg-primary px-3 py-2 rounded mb-3">EL MÁS VENDIDO</span>
+                        <h4 class="fw-medium">Pro Full Admin</h4>
+                        <div class="my-3">
+                            <span class="display-5 fw-bold text-white">$350.000</span>
+                            <p class="text-white">Pago 50% anticipado</p>
                         </div>
-                        <ul class="list-unstyled text-start">
-                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Landing Institucional 5 secciones</li>
-                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Botón WhatsApp</li>
-                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Formulario integrado con WhatsApp</li>
-                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Carrousel de Marcas</li>
-                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i>Optimización SEO Local</li>                            
+                        <ul class="list-unstyled text-start mt-3">
+                            <li class="mb-2"><i class="bi bi-check2 text-warning me-2"></i>Landing 5 secciones</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-warning me-2"></i>Botón WhatsApp</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-warning me-2"></i>Formulario directo a WhatsApp</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-warning me-2"></i>Carrousel de Marcas</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-warning me-2"></i>Optimización SEO Local</li>   
+                            <hr>                         
                             <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Catálogo CSV (Excel)</li>
                             <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Sistema de ofertas y filtros</li>
                             <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Tracking de Pedidos</li>
                             <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Panel Administrable</li>
                             <li class="mb-2"><i class="bi bi-star-fill text-warning me-2"></i>Mantenimiento autónomo</li>
                         </ul>
-                        <button onclick="order('Pro Full')" class="btn btn-primary w-100 py-3 fw-bold shadow">RESERVAR MI CUPO</button>
+                        <button onclick="order('Pro Full')" class="btn btn-light w-100 py-3 fw-bold shadow mt-3">RESERVAR MI CUPO</button>
                     </div>
                 </div>
             </div>
@@ -270,13 +292,13 @@
     </section>
 
 
-    <footer class="bg-dark text-white py-5 mt-5">
+    <footer class="bg-dark text-white py-5 mt-5 px-2">
         <div class="container text-center">
-            <h3 class="fw-bold mb-4">¿Dudas? Chateemos por WhatsApp</h3>
-            <a href="https://wa.me/5492613871088" class="btn btn-wa btn-lg px-5 py-3 shadow">
-                <i class="bi bi-whatsapp me-2"></i> CONSULTAR CON UN EXPERTO
+            <h3 class="fw-bold mb-4">¿Empezamos? Chateemos</h3>
+            <a href="https://wa.me/5492613871088" class="btn btn-wa px-5 py-3 shadow">
+                <i class="bi bi-whatsapp me-2"></i> HABLAR CON ASESOR
             </a>
-            <p class="mt-5 opacity-50 small">© 2026 Agencia Tech | Desarrollos de Alta Conversión | Mendoza, Argentina.</p>
+            <p class="mt-5 opacity-50 small">© 2026 TuWebHoy.com.ar | Desarrollos de Alta Conversión | Mendoza, Argentina.</p>
         </div>
     </footer>
 
