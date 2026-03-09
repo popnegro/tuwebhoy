@@ -1,205 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <link rel="preload" as="image" href="slide-02.webp" fetchpriority="high">
-    <style>
-        /* CSS CRÍTICO: Dibuja la estructura base sin esperar descargas */
-        :root {
-            --yellow: #ffc107;
-            --dark: #212529;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background: #f4f4f4;
-            color: var(--dark);
-        }
-
-        .navbar {
-            background: var(--dark);
-            height: 56px;
-            display: flex;
-            align-items: center;
-            padding: 0 1rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1030;
-        }
-
-        .navbar-brand {
-            color: var(--yellow);
-            font-weight: bold;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .main-card {
-            background: #fff;
-            border-radius: 15px;
-            margin-top: 80px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            min-height: 450px;
-        }
-
-        #map {
-            height: 175px;
-            background: #eee;
-            border-radius: 12px;
-            margin-bottom: 15px;
-        }
-
-        .btn-whatsapp {
-            background: #25d366;
-            color: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .carousel-item img {
-            aspect-ratio: 16/9;
-            background: #333;
-            width: 100%;
-        }
-
-        /* Esqueleto para evitar saltos (CLS) */
-        .skeleton {
-            background: #e0e0e0;
-            border-radius: 4px;
-        }
-        @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-.bi-spin {
-    display: inline-block;
-    animation: spin 1s linear infinite;
-    color: #0d6efd;
-}
-
-/* Mejora visual para el input de dirección manual */
-#manual-address:focus {
-    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
-    border-color: #ffc107;
-}
-    </style>
-    <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self'; 
-    media-src 'self' https://assets.mixkit.co;
-    script-src 'self' 'unsafe-inline' https://maps.gstatic.com https://maps.googleapis.com https://www.googletagmanager.com https://cdn.jsdelivr.net https://*.googleapis.com; 
-    style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://cdnjs.cloudflare.com; 
-    img-src 'self' data: https://maps.gstatic.com https://maps.googleapis.com https://cdn-icons-png.flaticon.com https://popnegro.github.io; 
-    font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com; 
-    connect-src 'self' https://maps.gstatic.com https://maps.googleapis.com https://www.google-analytics.com https://region1.google-analytics.com https://cdn.jsdelivr.net;
-    frame-src 'self' https://www.google.com;">
-
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-
-    <meta http-equiv="Cache-Control" content="max-age=31536000">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaxiGO Mendoza | Pedir Taxi con GPS</title>
-    <meta name="description"
-        content="Pedí tu taxi o remis en Mendoza de forma rápida. Ubicación GPS exacta, choferes profesionales y servicio 24hs. ¡Viajá seguro!">
-    <meta name="keywords"
-        content="taxi mendoza, pedir taxi maipu, remis mendoza, taxi aeropuerto mendoza, transporte mendoza gps, pedir taxi por whatsapp mendoza">
-    <meta name="author" content="TaxiGo Mendoza - Luis Grasso">
-    <meta name="robots" content="index, follow">
-    <meta name="geo.region" content="AR-M">
-    <meta name="geo.placename" content="Mendoza">
-    <meta name="geo.position" content="-32.9815;-68.7890">
-    <meta name="ICBM" content="-32.9815, -68.7890">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://popnegro.github.io/tuwebhoy/taxis/">
-    <meta property="og:title" content="TaxiGO Mendoza | Pedir Taxi con GPS">
-    <meta property="og:description"
-        content="Pedí tu taxi o remis en Mendoza de forma rápida. Ubicación GPS exacta, choferes profesionales y servicio 24hs. ¡Viajá seguro!">
-    <meta property="og:image" content="https://popnegro.github.io/tuwebhoy/taxis/preview-image.jpg">
-    <link rel="canonical" href="https://popnegro.github.io/tuwebhoy/taxis/">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" media="print"
-        onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print"
-        onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
-        media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="theme.min.css" media="print" onload="this.media='all'">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#ffc107">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="taxigo-icon.webp">
-
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TaxiService",
-  "name": "TaxiGO Mendoza",
-  "description": "Servicio de taxis y remises con despacho por GPS en todo Mendoza.",
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": "TaxiGO Mendoza",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": [
-        "Capital", "Godoy Cruz", "Guaymallén", "Las Heras", "Luján de Cuyo", 
-        "Maipú", "Junín", "La Paz", "Lavalle", "Rivadavia", 
-        "Santa Rosa", "San Martín", "San Carlos", "Tunuyán", "Tupungato", 
-        "General Alvear", "Malargüe", "San Rafael"
-      ],
-      "addressRegion": "Mendoza",
-      "addressCountry": "AR"
-    },
-    "telephone": "+5492613871088",
-    "priceRange": "$$"
-  },
-  "areaServed": {
-    "@type": "AdministrativeArea",
-    "name": "Provincia de Mendoza"
-  }
-}
-</script>
+    <meta name="description" content="Pedí tu taxi o remis en Mendoza de forma rápida.">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.min.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <i class="bi bi-bell-fill  me-4"></i>
-                <span class="fw-bold text-yellow animate__animated animate__fadeInLeft"
-                    style="letter-spacing: 1px; font-style: italic; font-size: x-large;">Señorial Remises</span>
+   <header class="p-3 border-bottom bg-white sticky-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg p-0">
+            <a href="/" class="navbar-brand d-flex align-items-center link-body-emphasis text-decoration-none me-auto">
+                <i class="bi bi-taxi-front fs-2 me-2"></i> Señorial Remis
             </a>
-        </div>
-    </nav>
 
-    <header id="taxiCarousel" class="carousel slide skeleton" data-bs-ride="carousel" style="margin-top: 56px;">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="slide-02.webp" class="d-block w-100"  width="800" height="400"
-                    alt="Taxi Mendoza">
-                <div class="carousel-caption">
-                    <h2 class="fw-bold animate__animated animate__fadeInDown">Simple y rápido</h2>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 link-secondary">Solicitar viaje</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 link-body-emphasis">Reservar</a></li>
+                </ul>
+
+                <div class="text-lg-end text-center mt-2 mt-lg-0" id="user-auth-container">
+                    <button id="login-btn" class="btn btn-outline-dark rounded-pill" onclick="handleLogin()">
+                        <i class="bi bi-google me-2"></i> Iniciar Sesión
+                    </button>
                 </div>
             </div>
-        </div>
-    </header>
+        </nav>
+    </div>
+</header>
 
-    <main class="container mb-5">
-        <div class="row justify-content-center">
-            <div class="col-md-7">
-                <div class="card main-card animate__animated animate__fadeInUp">
+    <section class="hero-full py-5">
+        <div class="container">
+            <div class="row align-items-center g-5 py-5">
+                <div class="col-lg-6">
+                    <div class="card p-4 shadow-lg rounded-4 border-0">
+                        <ul class="nav nav-pills nav-justified mb-4" id="pills-tab" role="tablist">
+                            <li class="nav-item"><button class="nav-link active fw-bold" data-bs-toggle="pill" data-bs-target="#inmediato">Ahora</button></li>
+                            <li class="nav-item"><button class="nav-link fw-bold" data-bs-toggle="pill" data-bs-target="#programado">Programar</button></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="inmediato">
                     <div class="mb-2 px-0">
                         <div class="d-flex justify-content-between align-items-center mb-2 px-1">
                             <small class="fw-bold text-muted">
@@ -215,15 +67,15 @@
 
                         <div id="manual-address-container" class="mb-3 d-none animate__animated animate__shakeX">
                             <div class="alert alert-warning py-2 mb-2">
-                                <i class="bi bi-exclamation-triangle-fill me-2"></i> Escribí tu dirección abajo:
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                GPS no disponible. Escribí tu dirección abajo:
                             </div>
-                            <input type="text" id="manual-address"
-                                class="form-control form-control-lg border-warning shadow-sm"
-                                placeholder="Ej: San Martín 123, Maipú" oninput="actualizarDireccionManual()">
+                            <input type="text" id="manual-address" class="form-control border-warning shadow-sm"
+                                placeholder="Ej: Calle San Martín 123, Maipú" oninput="actualizarDireccionManual()">
                         </div>
 
                         <div id="map" style="height: 175px; width: 100%; border-radius: 12px; border: 1px solid #eee;"
-                            class="shadow-sm mb-3 skeleton"></div>
+                            class="shadow-sm mb-3"></div>
                     </div>
 
                     <div class="d-grid gap-2">
@@ -238,25 +90,6 @@
                         </a>
                     </div>
 
-                    <div id="eta-container" class="mt-3 p-3 bg-light rounded-3 d-none animate__animated">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <span class="d-block small text-muted text-uppercase fw-bold">Llegada estimada</span>
-                                <h4 class="fw-bold mb-0 text-primary" id="eta-timer">Calculando...</h4>
-                            </div>
-                            <div class="text-end">
-                                <i
-                                    class="bi bi-car-front-fill fs-1 text-warning animate__animated animate__sideInRight animate__infinite animate__slow"></i>
-                            </div>
-                        </div>
-                        <div class="progress mt-2" style="height: 6px;">
-                            <div id="eta-progress"
-                                class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
-                                role="progressbar" style="width: 100%"></div>
-                        </div>
-                    </div>
-
-
                     <div class="row mt-3 g-2 text-center small text-secondary">
                         <div class="col-4 border-end">
                             <i class="bi bi-clock-fill text-primary d-block fs-4 mb-1"></i> 15 min
@@ -269,104 +102,34 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="row mt-5 g-2 px-2 animate__animated animate__fadeInUp">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h5 class="fw-bold mb-0">Opiniones de clientes</h5>
-                        <div class="text-end">
-                            <span class="fw-bold">4.9</span>
-                            <span class="star-rating"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i></span>
-                        </div>
-                    </div>
-
-                    <div class="review-card shadow-lg">
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="avatar me-3"><img src="review-01.png" class="img-responsive" fetchpriority="low"
-                                    width="40" height="40" alt="avatar opinion"></div>
-                            <div class="flex-grow-1">
-                                <p class="mb-0 fw-bold small">Juan Pérez </p>
-                                <span class="star-rating"><i class="bi bi-star-fill"></i><i
-                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                            <div class="tab-pane fade" id="programado">
+                                <p class="text-center">Seleccione fecha y hora.</p>
                             </div>
-                            <small class="text-muted">hace 2 días</small>
                         </div>
-                        <p class="small text-muted mb-0">"Llegaron en 5 minutos al aeropuerto. El conductor fue muy
-                            amable y el auto estaba impecable. Muy recomendado."</p>
                     </div>
-
-                    <div class="review-card shadow-lg">
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="avatar me-3"><img src="review-01.png" class="img-responsive" fetchpriority="low"
-                                    width="40" height="40" alt="avatar opinion"></div>
-                            <div class="flex-grow-1">
-                                <p class="mb-0 fw-bold small">Javier García </p>
-                                <span class="star-rating"><i class="bi bi-star-fill"></i><i
-                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
-                            </div>
-                            <small class="text-muted">hace 1 semana</small>
-                        </div>
-                        <p class="small text-muted mb-0">"Servicio confiable y precio justo. Pedí por WhatsApp y la
-                            respuesta fue inmediata."</p>
-                    </div>
-
-                    <div class="text-center mt-3">
-                        <a href="https://share.google/GCooYCxPtwu4wiGdL"
-                            class="text-decoration-none small fw-bold text-primary">Ver las 148 reseñas en Google
-                            Maps</a>
-                    </div>
+                </div>
+                <div class="col-lg-6 text-white">
+                    <h1 class="display-3 fw-bold mb-4">Tu viaje, a un toque de distancia.</h1>
+                    <p class="lead">Servicio de remises premium con tecnología de punta.</p>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
     <div class="modal fade" id="modalExito" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content animate__animated animate__zoomIn border-0 shadow-lg text-center"
-                style="border-radius: 20px;">
-                <div class="modal-body p-5">
-                    <i
-                        class="bi bi-shield-check-fill text-success display-1 animate__animated animate__tada animate__infinite"></i>
-                    <h3 class="fw-bold mt-3">¡Pedido Enviado!</h3>
-                    <p class="text-muted">El chofer ya recibió tu ubicación.</p>
-                    <button onclick="compartirViajeSeguro()"
-                        class="btn btn-outline-success w-100 py-3 rounded-pill fw-bold mb-3">
-                        <i class="bi bi-share-fill me-2"></i> COMPARTIR VIAJE
-                    </button>
-                    <button type="button" class="btn btn-dark w-100 py-3 rounded-pill fw-bold"
-                        data-bs-dismiss="modal">LISTO</button>
-                </div>
+            <div class="modal-content text-center p-5 rounded-4 border-0 shadow-lg">
+                <i class="bi bi-shield-check-fill text-success display-1"></i>
+                <h3 class="fw-bold mt-3">¡Pedido Enviado!</h3>
+                <button type="button" class="btn btn-dark w-100 py-3 rounded-pill mt-3" data-bs-dismiss="modal">LISTO</button>
             </div>
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <div class="col-md-12 text-center text-md-center">
-                <div class="d-flex justify-content-center justify-content-md-center gap-3"><a href="#"
-                        class="social-icon bi bi-facebook" aria-label="Seguinos en Facebook"></a><a href="#"
-                        target="_blank" rel="noopener noreferrer"
-                        class="social-icon bi bi-instagram fs-4 text-white shadow-sm"
-                        aria-label="Instagram de TaxiGo"></a><a href="#" target="_blank" rel="noopener noreferrer"
-                        class="social-icon bi bi-twitter-x fs-4 text-white shadow-sm"
-                        aria-label="Twitter X de TaxiGo"></a></div>
-                <p class="medium mt-3">Escríbenos: <a href="mailto:grasso.luis@gmail.com"
-                        class="text-warning text-decoration-none">info@taxigo.com.ar</a></p>
-            </div>
-
-            <div class="row footer-bottom text-center">
-                <div class="col-12">
-                    <p class="small mb-0">© 2026 TaxiGO Mendoza <br>
-                        Diseño mobile para prueba comercial</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <audio id="beep-success" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3"></audio>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuFEjycWBUxeJ32jWckekiIutLgcul21Q&libraries=places&callback=initMap"
+        defer></script>
 
     <script>
         let map, marker, geocoder;
@@ -503,14 +266,19 @@
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js');
         }
+        function handleLogin() {
+            const container = document.getElementById('user-auth-container');
+            container.innerHTML = `
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle text-decoration-none" data-bs-toggle="dropdown">
+                        <img src="https://github.com/mdo.png" width="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="location.reload()">Cerrar sesión</a></li>
+                    </ul>
+                </div>`;
+        }
     </script>
-
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuFEjycWBUxeJ32jWckekiIutLgcul21Q&libraries=places&callback=initMap"
-        defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script src="https://www.googletagmanager.com/gtag/js?id=G-RNGWR660DF" defer></script>
-
 </body>
-
 </html>
